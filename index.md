@@ -1,4 +1,5 @@
 ---
-title: Welcome to my blog
+title: Luke Kuzmish
 ---
 
+Laravel-centric technical blog posts.
