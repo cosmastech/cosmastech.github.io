@@ -6,3 +6,6 @@ description: Technical blog focused on Laravel, PHP, MySQL
 #minima variables
 github_username:   cosmastech
 comments_repo: cosmastech/cosmastech.github.io
+
+plugins:
+  - jemoji
