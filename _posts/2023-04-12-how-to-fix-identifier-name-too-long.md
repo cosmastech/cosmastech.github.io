@@ -4,11 +4,11 @@ date: 2023-04-12
 tags: Laravel, database, mysql
 ---
 
-Do you love verbosity in your database tables and columns? ✔️
+Do you love verbosity in your database tables and columns? ✅
 
-Are you running into issues where Laravel's migration helpers like `foreignIdFor()` are not letting your migrations run? ✖️
+Are you running into issues where Laravel's migration helpers like `foreignIdFor()` are not letting your migrations run? ❗
 
-Take for instance this sample migration:
+Take for instance this migration:
 
 ```php
 use App\Models\KnowledgeBaseResource;
