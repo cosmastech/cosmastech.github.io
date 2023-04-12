@@ -1,6 +1,7 @@
 theme: minima
 author: Luke Kuzmish
 email: luke@kuzmish.com
+title: cosmastech
 description: Technical blog focused on Laravel, PHP, MySQL
 
 #minima variables
