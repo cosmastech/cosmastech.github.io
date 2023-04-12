@@ -1,5 +1,5 @@
 ---
-title: "How to fix the 'Identifier name too long' exception"
+title: "How to fix the 'Identifier name too long' exception in your Laravel migrations"
 date: 2023-04-12
 tags: Laravel, database, mysql
 ---
