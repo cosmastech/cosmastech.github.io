@@ -60,7 +60,7 @@ Schema::create('company_knowledge_base_resource_matches', function (Blueprint $t
 
 This leaves more room for error and is just a little bit ugly.
 
-With [this PR](https://github.com/laravel/framework/pull/46746) you can now specify the index name when calling `constrained()`
+With [Laravel 10.8.0](https://github.com/laravel/framework/releases/tag/v10.8.0) you can now specify the index name when calling `constrained()`
 ```php
 Schema::create('company_knowledge_base_resource_matches', function (Blueprint $table) {
     $table->id();
