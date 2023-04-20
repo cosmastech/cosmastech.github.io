@@ -8,5 +8,8 @@ description: Technical blog focused on Laravel, PHP, MySQL
 github_username:   cosmastech
 comments_repo: cosmastech/cosmastech.github.io
 
+# Google Analytics
+google_analytics: G-0DQ0ZDHJ5Y
+
 plugins:
   - jemoji
