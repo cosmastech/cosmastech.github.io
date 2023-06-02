@@ -30,9 +30,9 @@ Now if the environment supports a Redis rate limiter, ThrottleRequestsWithRedis 
 You do not need to change anything in your `app/Http/Kernel` either.
 
 ```php
-    protected $middlewareGroups = [
-        'api' => [
-            \Illuminate\Routing\Middleware\ThrottleRequests::class.':api', // <-- will use ThrottleRequestsWithRedis instead
-        ],
-    ];
-    ```
+protected $middlewareGroups = [
+    'api' => [
+        \Illuminate\Routing\Middleware\ThrottleRequests::class.':api', // <-- will use ThrottleRequestsWithRedis instead
+    ],
+];
+```
