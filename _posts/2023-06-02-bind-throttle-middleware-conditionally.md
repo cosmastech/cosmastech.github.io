@@ -25,4 +25,14 @@ use Illuminate\Routing\Middleware\ThrottleRequestsWithRedis;
     }
 ```
 
-Now if the environment supports a Redis rate limiter, ThrottleRequestsWithRedis will be used in place of ThrottleRequests. Otherwise, the base ThrottleRequests class is used. 😃
+Now if the environment supports a Redis rate limiter, ThrottleRequestsWithRedis will be used in place of ThrottleRequests. Otherwise, the base ThrottleRequests class is used.
+
+You do not need to change anything in your `app/Http/Kernel` either.
+
+```php
+    protected $middlewareGroups = [
+        'api' => [
+            \Illuminate\Routing\Middleware\ThrottleRequests::class.':api', // <-- will use ThrottleRequestsWithRedis instead
+        ],
+    ];
+    ```
