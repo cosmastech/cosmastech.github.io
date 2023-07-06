@@ -1,6 +1,6 @@
 ---
 title: "Set your Gate's default rejection response"
-date: 2023-06-20
+date: 2023-07-06
 tags: Laravel, authorization
 ---
 ## Background
