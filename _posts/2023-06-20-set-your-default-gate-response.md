@@ -74,4 +74,4 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-Now in the example above, a transaction denied by the TransactionPolicy will return a 404, the same as if the model does not exist. However, we still have a problem of the `ModelNotFoundException`
+Now in the example above, a transaction denied by the TransactionPolicy will return a 404, the same as if the model does not exist. However, we still have a problem of the `ModelNotFoundException`. If you want to make sure the messages are consistent, you'll need to modify `App\Exceptions\Handler` to change how a ModelNotFound exception is rendered.
