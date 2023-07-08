@@ -5,6 +5,11 @@ title: cosmastech
 description: Technical blog focused on Laravel, PHP, MySQL
 url: https://cosmastech.com
 logo: https://cosmastech.com/assets/luke_profile.jpeg
+# Set the image for the Open Graph Protocol
+image:
+  path: /assets/luke_profile.jpeg
+  height: 200
+  width: 200
 
 #minima variables
 github_username:   cosmastech
