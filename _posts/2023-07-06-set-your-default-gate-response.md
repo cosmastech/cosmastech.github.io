@@ -1,5 +1,5 @@
 ---
-title: "Set your Gate's default rejection response"
+title: "Set Laravel's default Gate rejection response"
 date: 2023-07-06
 tags: Laravel, authorization
 description: Make model not found and not authorized indistinguishable.
