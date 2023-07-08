@@ -3,6 +3,7 @@ author: Luke Kuzmish
 email: luke@kuzmish.com
 title: cosmastech
 description: Technical blog focused on Laravel, PHP, MySQL
+url: https://cosmastech.com
 
 #minima variables
 github_username:   cosmastech
@@ -10,6 +11,13 @@ comments_repo: cosmastech/cosmastech.github.io
 
 # Google Analytics
 google_analytics: G-0DQ0ZDHJ5Y
+
+# SEO
+social:
+  name: Luke Kuzmish
+  links:
+    - https://www.linkedin.com/in/luke-kuzmish-73a68b205/
+    - https://github.com/cosmastech
 
 plugins:
   - jemoji
