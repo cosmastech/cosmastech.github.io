@@ -2,6 +2,11 @@
 title: "Set your Gate's default rejection response"
 date: 2023-07-06
 tags: Laravel, authorization
+image:
+  path: /assets/luke_profile.jpeg
+  height: 200
+  width: 200
+  alt: Cosmastech
 ---
 ## Background
 There are at least two ways to use a policy within your controller methods.
