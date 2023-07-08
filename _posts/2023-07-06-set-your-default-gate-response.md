@@ -66,7 +66,7 @@ $ curl "https://mess-around.test/api/transaction/123" -H "Accept: application/js
 }
 ```
 
-But what happens if you request a transaction ID that doesn't exist? Now the response is different: you'll receive a 404 with "No query result found for \[App\\Models\\Transaction] 999".
+But what happens if you request a transaction ID that doesn't exist? Now the response is different: you'll receive a 404 with "No query result found for \[App\\Models\\Transaction] 999999".
 
 ```zsh
 $ curl "https://mess-around.test/api/transaction/999999" -H "Accept: application/json" -v
@@ -75,7 +75,7 @@ $ curl "https://mess-around.test/api/transaction/999999" -H "Accept: application
 < content-type: application/json
 < x-powered-by: PHP/8.2.6
 {
-    "message": "No query results for model [App\\Models\\Transaction] 999"
+    "message": "No query results for model [App\\Models\\Transaction] 999999"
 }
 ```
 
