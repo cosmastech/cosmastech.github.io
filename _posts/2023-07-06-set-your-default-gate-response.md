@@ -4,8 +4,8 @@ date: 2023-07-06
 tags: Laravel, authorization
 image:
   path: /assets/luke_profile.jpeg
-  height: 200
-  width: 200
+  height: 100
+  width: 100
   alt: Cosmastech
 ---
 ## Background
