@@ -31,7 +31,7 @@ and a routes file like:
 ```php
 // api.php
 
-Route::get('transaction/{transaction}', [App\Http\Controllers\PostController::class, 'show'])->can('view', 'transaction');
+Route::get('transaction/{transaction}', [App\Http\Controllers\TransactionController::class, 'show'])->can('view', 'transaction');
 ```
 
 and finally, a policy like this:
