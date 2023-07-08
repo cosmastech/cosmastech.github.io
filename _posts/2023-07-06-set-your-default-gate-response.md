@@ -2,6 +2,7 @@
 title: "Set your Gate's default rejection response"
 date: 2023-07-06
 tags: Laravel, authorization
+description: Make model not found and not authorized indistinguishable.
 image:
   path: /assets/luke_profile.jpeg
   height: 100
