@@ -4,6 +4,7 @@ email: luke@kuzmish.com
 title: cosmastech
 description: Technical blog focused on Laravel, PHP, MySQL
 url: https://cosmastech.com
+logo: https://cosmastech.com/assets/luke_profile.jpeg
 
 #minima variables
 github_username:   cosmastech
