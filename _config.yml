@@ -13,3 +13,4 @@ google_analytics: G-0DQ0ZDHJ5Y
 
 plugins:
   - jemoji
+  - jekyll-seo-tag
