@@ -55,7 +55,7 @@ use Illuminate\Queue\Attributes\WithoutRelations;
         #[WithoutRelations]
         private readonly User $user,
         #[WithoutRelations]
-        public readonly Subscription $currentSubscription,
+        private readonly Subscription $currentSubscription,
         private readonly int $numberOfDays = 30
     ) {
     }
@@ -73,7 +73,7 @@ class ExtendSubscription implements ShouldQueue
 
     public function __construct(
         private readonly User $user,
-        public readonly Subscription $currentSubscription,
+        private readonly Subscription $currentSubscription,
         private readonly int $numberOfDays = 30
     ) {
     }
@@ -82,6 +82,6 @@ class ExtendSubscription implements ShouldQueue
 🧹 Now that's clean.
 
 ### In Closing
-The `WithoutRelations` attribute is very handy and can make your codebase more clean.
+Loading unnecessary relations on queued events and jobs can put an unnecessary strain on your database and decrease queue performance.  If you don't need the relation in your job, you shouldn't be loading them!  The `WithoutRelations` attribute is very handy and can make your codebase more clean.
 
-You can leverage the attribute on any property of a class that that employs `SerializesModels` like Events or Jobs.
+Remember: You can leverage the attribute on any property of a class that that employs `SerializesModels` like Events or Jobs.
