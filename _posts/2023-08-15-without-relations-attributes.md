@@ -1,8 +1,8 @@
 ---
-title: "Use the new WithoutRelations attribute"
+title: "How WithoutRelations can keep your code clean"
 date: 2023-08-15
 tags: Laravel, queue, 
-description: How to make use of the new WithoutRelations attribute
+description: How to make use of the new WithoutRelations attribute on jobs and events.
 ---
 
 If you want your Laravel application to be as efficient as possible, you're probably already calling `withoutRelations()` within [the constructor of your Jobs and Events](https://laravel.com/docs/10.x/queues#handling-relationships).
