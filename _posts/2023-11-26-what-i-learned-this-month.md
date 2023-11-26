@@ -53,7 +53,7 @@ was a place to invest time into growing my knowledge, Python would probably pay 
 * [cogent3 - Filter available_apps by name](https://github.com/cogent3/cogent3/pull/1637/files) - I love that Python now has typehints. My understanding is that typehints are more a nicety than a true enforcement of types, which I dislike. I find the `{str} in {another_str}` format to be a big departure, but something I imagine I could get used to.
 * [monkeypatch/tanuki.py - Telemetry can be disabled](https://github.com/monkeypatch/tanuki.py/pull/90) - class level static variables are unintuitive to me coming from PHP-land, so realizing I had to reference the class by name within a static method was a learning opportunity.
 
-### Thoughts
+#### Thoughts
 Python requires a good IDE due to its dynamic typing. And even using [PyCharm](https://www.jetbrains.com/pycharm/), I found that it was often a struggle to find which function was being called on an object. I hope that as typehints become more widely adopted, this problem will lessen.
 
 Poetry, pyenv, venv... wtf? There's too much going on here, and I struggled with each project to get the environment set up. PyCharm does help with that, to some degree, but it's still not perfect. It really helps me appreciate [composer](https://getcomposer.org/), PHP's package manager as well as tools like Laravel's [valet](https://laravel.com/docs/10.x/valet).
