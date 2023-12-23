@@ -141,14 +141,19 @@ class CustomEloquentBuilder extends Builder
 Now we can get the best of both worlds.
 
 ```php
+use DB;
+use App\Models\User;
+use App\Enums\Role;
+
 $usersToCreate = [
     ['name' => 'Jim', 'role' => Role::ADMIN, 'settings' => ['background_color' => '#fff']],
     ['name' => 'Bob', 'role' => Role::GUEST, 'settings' => []],
     // ...
 ];
-\DB::enableQueryLog();
+
+DB::enableQueryLog();
 User::insertWithCasts($usersToCreate);
-$outputQueries = \DB::getRawQueryLog();
+$outputQueries = DB::getRawQueryLog();
 
 count($outputQueries) === 1; // true
 
