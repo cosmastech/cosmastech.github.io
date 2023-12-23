@@ -2,7 +2,7 @@
 title: "What I have been working on in November 2023"
 date: 2023-11-26
 tags: open-source, Golang, python
-description: How to make use of the new WithoutRelations attribute on jobs and events.
+description: How I'm learning Golang and Python by contributing to open-source projects.
 ---
 
 ## A bit about my background
