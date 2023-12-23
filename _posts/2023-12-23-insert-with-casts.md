@@ -141,6 +141,7 @@ class CustomEloquentBuilder extends Builder
 Now we can get the best of both worlds.
 
 ```php
+use DateTime;
 use DB;
 use App\Models\User;
 use App\Enums\Role;
@@ -160,7 +161,7 @@ count($outputQueries) === 1; // true
 $user = User::latest()->first();
 
 echo $user->role === Role::GUEST; // true
-echo $user->created_at instanceof \DateTime; // true
+echo $user->created_at instanceof DateTime; // true
 ```
 
 If you prefer, you can [find the the Eloquent builder here as a gist](https://gist.github.com/cosmastech/bfd6d060df602d3fed1f3982febb5305).
