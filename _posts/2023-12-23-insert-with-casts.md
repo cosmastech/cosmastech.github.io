@@ -158,4 +158,4 @@ echo $user->role === Role::GUEST; // true
 echo $user->created_at instanceof \DateTime; // true
 ```
 
-If you prefer, you can [find the the Eloquent builder here as a gist.](https://gist.github.com/cosmastech/bfd6d060df602d3fed1f3982febb5305)https://gist.github.com/cosmastech/bfd6d060df602d3fed1f3982febb5305
+If you prefer, you can [find the the Eloquent builder here as a gist](https://gist.github.com/cosmastech/bfd6d060df602d3fed1f3982febb5305).
