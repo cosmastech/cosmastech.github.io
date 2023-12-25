@@ -18,9 +18,9 @@ defaults:
     scope:
       path: ""
     values:
-      logo: https://cosmastech.com/assets/luke_profile.jpeg
+      logo: https://cosmastech.com/assets/cosmastech_logo.png
       image:
-        path: /assets/luke_profile.jpeg
+        path: /assets/cosmastech_logo.png
         height: 100
         width: 100
       social:
