@@ -2,4 +2,4 @@
 title: Luke Kuzmish
 ---
 
-Laravel-centric technical blog posts.
+Coding, open-source, PHP, Laravel
