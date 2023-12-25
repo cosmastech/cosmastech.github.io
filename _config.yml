@@ -2,7 +2,7 @@ theme: minima
 author: Luke Kuzmish
 email: luke@kuzmish.com
 title: cosmastech
-description: Technical blog focused on Laravel, PHP, MySQL
+description: Thoughts and tutorials on open-source with a focus on PHP/Laravel
 url: https://cosmastech.com
 logo: https://cosmastech.com/assets/cosmastech_logo.png
 
