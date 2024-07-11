@@ -9,8 +9,10 @@ description: How I created three packages to solve a single problem
 One of the most important lessons I learned in the past 3 months is the value of instrumentation within applications. Logs are great when you know there's a problem and want to see what's happening inside the application, but they do not provide quick feedback. They also can get very noisy. Metrics can tell us about the health of a system at a glance, and are much easier to trigger or alert on.
 
 Some examples of useful metrics might be:
+
 * how long do certain external API calls take to complete?
 * how many users employ a certain feature?
+* how many times is a product viewed in a shop?
 * how many jobs are currently in a given queue?
 
 I wanted to bring this valuable lesson to my work on an application written in Laravel. That should be simple, right?
@@ -60,3 +62,13 @@ And we finally reached the inner layer of this 3 project package: [`cosmastech/p
 In the end, the architecture follows a bit of an onion pattern.
 
 ![App Architecture](/assets/2024/laravel-statsd-architecture.png)
+
+## The final products
+### cosmastech/laravel-statsd-adapter
+Now you can [easily record statsd metrics in your Laravel application](https://github.com/cosmastech/laravel-statsd-adapter/). A handy `Stats` facade which allows for configuring multiple channels, as well easy dependency injection.
+
+### cosmastech/statsd-client-adapter
+A [statsd adapter package](https://github.com/cosmastech/php-statsd-client-adapter?tab=readme-ov-file) to be used in your PHP application. Check out the examples to see how this can work with different adapters.
+
+### cosmastech/psr-logger-spy
+This [logger spy](https://github.com/cosmastech/psr-logger-spy) may be useful in writing your own unit tests, or perhaps not.
