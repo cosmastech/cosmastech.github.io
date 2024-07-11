@@ -1,7 +1,7 @@
 ---
 title: "If you give a mouse a cookie..."
-date: 2024-07-10
-tags: Laravel, statsd, open-source, Reading
+date: 2024-07-11
+tags: Laravel, statsd, open-source, observability
 description: How I created three packages to solve a single problem
 ---
 
