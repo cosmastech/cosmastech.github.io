@@ -34,17 +34,21 @@ $user->save();
 Everything is handled synchronously in our test suite. If we have 100 tests that save a User in some capacity, they all need to accommodate this newly added observer. Say we have test suite that includes a test like this
 
 ```php
-class UserController extends \Tests\TestCase
+use App\Http\Controllers\UserController;
+use App\Models\User;
+use Tests\TestCase;
+
+class UserController extends TestCase
 {
     // ... other tests ...
 
     public function test_canUpdateUserProfile(): void
     {
-        $user = \App\Models\User::factory()->create(['business_name' => 'foo']);
+        $user = User::factory()->create(['business_name' => 'foo']);
 
         $this->actingAs($user)
             ->postJson(
-                action([\App\Http\Controllers\UserController::class, 'update']),
+                action([UserController::class, 'update']),
                 ['business_name' => 'bar']
             );
 
@@ -68,14 +72,21 @@ The underlying issue is that changing unrelated tests signals a deeper problem i
 Say I'm performing a bulk insert of users
 
 ```php
-$usersToInsert = getUsersFromCsv('/my-file.csv');
-User::insert($usersToInsert); // I can insert 100 users in a single query... but no observers are fired, so they don't have Stripe accounts created.
+$usersToInsert = getUsersFromCsv('/my-file.csv'); // 100 users
+User::insert($usersToInsert);
+/**
+ * I have inserted 100 users in a single query, but no observers fire,
+ * so they don't have Stripe accounts created.
+ */
 ```
 
 or I want to update all of the users belonging to a team
 
 ```php
-$team->user()->update(['active' => false]);  // No observers fired, so we never delete their invoices
+$team->user()->update(['active' => false]);
+/**
+ * No observers fired, so we never soft-delete their invoices.
+ */
 ```
 
 These can be worked around, of course. Just create each user one by one, leading to 100 queries instead of 1 query. Or retrieve all of the team's users from the database and update them each in a separate query. But this means an additional strain on your database and a slower response time.
@@ -128,17 +139,24 @@ Additionally, decomposing functionality makes it easier to write testable compon
 Here is an example of how we can test `UpdateUserAction` more directly.
 
 ```php
-class UpdateUserActionTest extends \Tests\TestCase
+use App\Actions\UpdateUserAction;
+use App\Models\User;
+use App\Models\Invoice;
+use App\Services\StripeService;
+use Tests\Doubles\StripeServiceDummy;
+use Tests\TestCase;
+
+class UpdateUserActionTest extends TestCase
 {
     // ... test that spies on the Stripe service to ensure we send the expected params ...
 
     public function test_invoked_updatesInvoices(): void
     {
         // Given
-        $user = \App\Models\User::factory()->create(['business_name' => 'Old Name']);
+        $user = User::factory()->create(['business_name' => 'Old Name']);
 
         // And the User has invoices
-        $invoices = \App\Models\Invoice::factory()->count(5)->for($user, 'user')->create(['sender' => 'Old Name']);
+        $invoices = Invoice::factory()->count(5)->for($user, 'user')->create(['sender' => 'Old Name']);
 
         // And we have faked a Stripe service bound to the container
         $this->app->bind(StripeService::class, StripeServiceDummy::class);
@@ -147,7 +165,7 @@ class UpdateUserActionTest extends \Tests\TestCase
         $user->business_name = 'My New Business Name';
 
         // When
-        $this->app->make(\App\Actions\UpdateUserAction::class)->__invoke($user);
+        $this->app->make(UpdateUserAction::class)->__invoke($user);
 
         // Then
         $invoices->refresh();
