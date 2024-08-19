@@ -194,3 +194,7 @@ It's important to remember that Observers and Events are not bad, but my experie
 ---
 
 Have you had success with observers and events on a large team? How did you go about achieving that? Have you suffered pitfalls as the result of reliance on event-driven architecture in Laravel? Let me know on Twitter [@cosmastech](https://twitter.com/cosmastech).
+
+---
+
+Edit 2024-08-19: Want to come work on Laravel stuff with me? [Teamworks is hiring](https://ats.rippling.com/teamworks-careers/jobs/5bcdf8ec-a842-44ce-aecd-bdebdcf592c6).
