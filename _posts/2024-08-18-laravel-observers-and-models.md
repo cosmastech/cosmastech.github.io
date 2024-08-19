@@ -38,7 +38,7 @@ use App\Http\Controllers\UserController;
 use App\Models\User;
 use Tests\TestCase;
 
-class UserController extends TestCase
+class UserControllerTest extends TestCase
 {
     // ... other tests ...
 
