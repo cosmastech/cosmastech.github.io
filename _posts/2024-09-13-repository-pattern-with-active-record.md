@@ -2,7 +2,7 @@
 title: "Laravel People (Generally) Don't Like Repositories"
 date: 2024-09-13
 tags: ActiveRecord, Laravel, Eloquent, code architecture
-description: My experience with the pitfalls of Observers
+description: The inherent pain of ActiveRecord
 ---
 
 Search [/r/laravel](https://www.reddit.com/r/laravel/) or Twitter for discussions about Laravel and repositories; the general consensus is that repositories are not necessary. Perhaps they are a vestige from a bygone era, or just something that developers from other languages and frameworks use because they don't understand Eloquent.
