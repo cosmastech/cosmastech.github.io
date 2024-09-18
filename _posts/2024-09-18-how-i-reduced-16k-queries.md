@@ -2,7 +2,7 @@
 title: "How I Reduced 16k Queries Per Day"
 date: 2024-09-18
 tags: Laravel, Eloquent, code architecture
-description: My experience with the pitfalls of Observers
+description: How an Eloquent method caused many unneeded queries and how we tracked it down
 ---
 
 On my team, the engineer who handles our devops had noted several times that we were seeing spikes in database latency and queries. The periodicity lined up with a command we ran every 5 minutes to scan for updates and then sync updated records with a vendor. I figured the solution was to maybe run the command less frequently, but because it was simply a paper cut, we had not allotted any time to fixing it.
