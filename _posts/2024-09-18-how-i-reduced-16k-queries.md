@@ -23,7 +23,7 @@ I ran the command locally using the `DB::pretend()` function. This function allo
 dump(\DB::getRawQueryLog());
 ```
 
-Sure enough, even with no Comments records in my local database, there was this call to fetch distinct `commentable_type` entries. It definitely wasn't in the code... where was this happening?
+Sure enough, even with no comments records in my local database, there was this call to fetch distinct `commentable_type` entries. It definitely wasn't in our code... where was this happening?
 
 ### Bring on XDebug
 
