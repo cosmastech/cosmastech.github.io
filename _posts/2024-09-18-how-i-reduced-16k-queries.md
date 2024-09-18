@@ -157,7 +157,7 @@ No more distinct query! Plus we still have lazy-loading for the `commentable` mo
 
 ### Hol up! The math ain't mathing
 
-If you run this command every five minutes, how did we get 16k queries per day? Each time the command runs, it would trigger another set of jobs that had a similar query.
+If you run this command every five minutes, how did we get 16k queries per day? The scheduled command fans out, and the fan out jobs are what actually trigger this query.
 
 ### The Real Conclusion
 
