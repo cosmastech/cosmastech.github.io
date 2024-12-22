@@ -7,7 +7,7 @@ description: Don't want your model's class name and ID leaked to end-users? Read
 
 ## The `ModelNotFoundException`
 Laravel has some handy functionality to bail when a model can't be found.  It can happen in a number of places,
-but the two places I most often see it get raised are in route model binding and calling `$myModel->findOrFail()`.
+but the two places I most often see it get raised are in route model binding and calling `Model::findOrFail()`.
 
 ### Implicit Route Model Binding
 [Implicit route model binding](https://laravel.com/docs/11.x/routing#implicit-binding) is a huge win
@@ -50,7 +50,7 @@ And if the subscription isn't found by that ID, we'll receive a 404 with a respo
 }
 ```
 
-### Model `*OrFail()` methods
+### Model *OrFail() methods
 If you want to find a particular model by some condition and throw an exception if it doesn't exist,
 Laravel has you covered. Take for instance a route like this:
 ```php
@@ -85,6 +85,23 @@ and worry about this information becoming an attack vector.
 
 If you have gone through the pain of obscuring all internal integer IDs by only revealing UUIDs in API responses
 and routes, then it's very simple to accidentally expose them.
+
+```php
+Route::get(
+    'users/{user:uuid}/company-details',
+    function (User $user) {
+        $company = Company::findOrFail($user->company_id);
+        // ... retrieve all the data you need to build a json response
+    });
+```
+
+Your request is `GET /users/db418725-ffdf-4273-be93-cd9b2bb00ca6/company-details`,
+but if the company doesn't exist, you'll get a response like this.
+```json
+{
+  "message": "No query results for model [App\\Models\\Company] 287"
+}
+```
 
 ## The solution
 If you're using Laravel 11, then you can modify the `bootstrap/app.php` file to create a custom handler for the
