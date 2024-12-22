@@ -132,7 +132,8 @@ return Application::configure(basePath: dirname(__DIR__))
     })->create();
 ```
 
-Using the above, we modify the Laravel exception handler to return a generic 404 response with a message like this:
+Using the above, we modify the Laravel exception handler so that a `ModelNotFoundException` still returns a 404 status code,
+but includes a generic message instead of which model couldn't be found, the namespace of that model, and the ID.
 
 ```json
 {
