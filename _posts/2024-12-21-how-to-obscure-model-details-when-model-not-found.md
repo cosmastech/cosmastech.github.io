@@ -63,7 +63,7 @@ Route::post(
     });
 ```
 
-If we make a request for a user who doesn't exist by that ID, we'll get an exception
+If we make a request for a user who doesn't exist by the supplied ID, we'll get a 404 response.
 ```json
 {
   "message": "No query results for model [App\\Models\\User] 200"
