@@ -50,7 +50,7 @@ And if the subscription isn't found by that ID, we'll receive a 404 with a respo
 }
 ```
 
-### Model *OrFail() methods
+### Model::*OrFail() methods
 If you want to find a particular model by some condition and throw an exception if it doesn't exist,
 Laravel has you covered. Take for instance a route like this:
 ```php
