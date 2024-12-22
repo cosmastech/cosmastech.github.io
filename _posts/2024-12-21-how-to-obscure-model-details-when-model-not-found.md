@@ -5,7 +5,7 @@ tags: [Laravel, Eloquent]
 description: Don't want your model's class name and ID leaked to end-users? Read on
 ---
 
-## The `ModelNotFoundException`
+## Laravel's ModelNotFoundException
 Laravel has some handy functionality to bail when a model can't be found.  It can happen in a number of places,
 but the two places I most often see it get raised are in route model binding and calling `Model::findOrFail()`.
 
