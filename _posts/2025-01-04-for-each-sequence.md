@@ -117,12 +117,3 @@ $payments = Payment::factory()
 
 Now we have our five Payment models and never need to worry about specifying the count of 
 models to create.
-
-
-User::factory()
-    ->forEachSequence(
-        ['name' => 'Taylor Otwell'],
-        ['name' => 'Nuno Maduro'],
-        ['name' => 'Christoph Rumpel'],
-    )
-    ->create();
