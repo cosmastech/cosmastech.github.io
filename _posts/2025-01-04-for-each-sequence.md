@@ -5,6 +5,8 @@ tags: [Laravel, Eloquent, Testing, TIL]
 description: How and why to use the forEachSequence helper
 ---
 
+![Drake Knows](/assets/2025/for-each-sequence.png)
+
 This title is a lie, I actually did not learn this today, but came across it a few weeks ago.
 Nonetheless, I wanted to share it since I think it's incredibly valuable, but is not
 included in the Laravel documentation.
@@ -115,3 +117,12 @@ $payments = Payment::factory()
 
 Now we have our five Payment models and never need to worry about specifying the count of 
 models to create.
+
+
+User::factory()
+    ->forEachSequence(
+        ['name' => 'Taylor Otwell'],
+        ['name' => 'Nuno Maduro'],
+        ['name' => 'Christoph Rumpel'],
+    )
+    ->create();
