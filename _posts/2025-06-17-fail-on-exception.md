@@ -6,21 +6,21 @@ description: A simple way to stop a job when further attempts will fail.
 ---
 
 ## The Problem
-We've all had this problem. We have a queued job that grabs some data from the database, performs some checks on it, and then inserts a new record or calls out to an external API.
+We have a queued job that grabs data from the database and performs some checks. If all is well, it either inserts a new record or maybe calls out to an external API.
 We want the job to retry if the API request fails or there's a hiccup with writing to the database, however, if any of the checks fail, we want to mark the job as failed and not
 bother retrying it.
 
 Not seeing anything obvious in the Laravel docs, we reach for Claude to tell us how to do this. It hallucinates some methods that don't exist, and now we have our original problem
-and we're a little pissed off with AI.
+and we're a little frustrated with AI's short-comings.
 
 **We've all been there.**
 
 But with the release of [Laravel 12.19](https://github.com/laravel/framework/releases/tag/v12.19.0), there's an easier way.
 
 ## `FailOnException` Job Middleware
-The solution is now as easy as simply adding a middleware that specifies which exceptions short-circuit the job retry.
+The solution is now as easy adding a middleware that specifies which exceptions short-circuit the job retry.
 
-For instance, consider your application receives an SNS payload and has to fetch a user from another system and store a record in your local database. You might have a job that looks like this:
+For instance, imagine your application receives an SNS payload and has to fetch a user from another system and store a record in your local database. An example of this might look something like this:
 
 ```php
 use App\Actions\RetrieveUserFromApiAction;
