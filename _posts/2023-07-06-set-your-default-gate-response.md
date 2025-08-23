@@ -96,7 +96,7 @@ class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        Gate::setDenialResponse(Response::denyAsNotFound());
+        Gate::defaultDenialResponse(Response::denyAsNotFound());
     }
 }
 ```
