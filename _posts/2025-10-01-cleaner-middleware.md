@@ -42,7 +42,10 @@ When we define a route which uses this middleware, we must tell it which role to
 use App\Http\AdminController;
 use App\Http\Middleware\EnsureUserHasRoleMiddleware;
 
-Route::post('admin', [AdminController::class, 'create'])->middleware(EnsureUserHasRoleMiddleware::class . ':super-admin');
+Route::post(
+    'admin',
+    [AdminController::class, 'create']
+)->middleware(EnsureUserHasRoleMiddleware::class . ':super-admin');
 ```
 
 This instructs Laravel that before entering into the `POST /admin` route, pass the request through our middleware to ensure they
@@ -73,7 +76,10 @@ class EnsureUserHasRoleMiddleware
 Then we can tidy up our route definition like this:
 
 ```php
-Route::post('admin', [AdminController::class, 'create'])->middleware(EnsureUserHasRoleMiddleware::forSuperAdmin());
+Route::post(
+    'admin',
+    [AdminController::class, 'create']
+)->middleware(EnsureUserHasRoleMiddleware::forSuperAdmin());
 ```
 
 If we are disciplined about using these static factory methods when defining middleware for our routes, our IDE can help us easily jump to
