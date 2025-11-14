@@ -1,12 +1,12 @@
 ---
-title: "Improving unit test runtime in Laravel modular monolith"
+title: "Improving unit test run time in Laravel modular monolith"
 date: 2025-11-13
 tags: Laravel, Testing, modular, PHPUnit
 ---
 
 I recently started a new job and was given my first exposure to a [modular monolith](https://laracasts.com/series/modular-laravel). On the surface, they have a lot
 to love: all aspects of your app in one repo, one set of dependencies to keep updated, reduced code duplication, and allowing multiple engineering teams to work in
-in their own isolated sections over the code are first that spring to mind. Modular monoalso of course present some challenges, and the one that kind of struck me
+in their own isolated sections of the code are first that spring to mind. Modular monoliths of course present some challenges, and the one that kind of struck me
 by surprise was test suite run time.
 
 In previous projects, test suites usually took at most two minutes to run locally. Parallelization obviously helps a great deal, but it is not a silver bullet. I
@@ -22,13 +22,13 @@ These are helpful guidelines, but an unfamiliar codebase with 8000+ tests is not
 
 ## Wait, it takes how long?
 In our CI pipeline, just the PHPUnit tests were taking between 8 and 10 minutes to execute fully. Heaven help you if you needed something merged quickly.
-The unit tests were going to be the gate. This mean we were running about 800 to 1000 tests per minute. Not slow, but long enough. Any process for me as a dev
-that takes long enough for me to think "Oh, I'll just do <xyz> while I wait" leads to me losing context, and usually forgetting what I was waiting on in
-the first place.
+The unit tests were going to be the gate. This means we were running about 800 to 1000 tests per minute. Not slow per se, but long enough to lead to context
+loss. Any process that takes long enough for me to think "Oh, I'll just do <xyz> while I wait" leads to me losing context, and usually forgetting what I was
+waiting on in the first place.
 
 ## The Bottleneck
 I had theories. Slow database queries, I figured. A staff engineer reached out to ask me if I saw anything obvious that would be slowing down our application
-boot times. He had made the effort to convert some of our feature tests to plain old PHPUnit tests and saw major improvements in the speed. He reported that
+boot times. He had taken the effort to convert some of our integrations tests to plain old PHPUnit tests and saw major improvements in the speed. He reported that
 boot times were fine in production. He's a smart guy and I trusted his intuition, so I decided to go down a rabbit hole.
 
 Leveraging [Herd's profiler](https://herd.laravel.com/docs/macos/debugging/profiler#profiling-cli-scripts), I decided to take a look at where our time
@@ -50,7 +50,7 @@ src
 ------------ Controllers
 ------------ routes.php
 -------- Models
--------- Provider
+-------- Providers
 ------------ ShippingServiceProvider.php
 ---- Payments
 -------- config
@@ -60,7 +60,7 @@ src
 ---------------- ProcessPaymentController.php
 ------------ routes.php
 -------- Models
--------- Provider
+-------- Providers
 ------------ PaymentsServiceProvider.php
 ```
 
@@ -72,7 +72,7 @@ register the modules routes and merge in its own config.
 
 declare(strict_types=1);
 
-namespace Domain\Shipping\Provider\ShippingProvider;
+namespace Domain\Shipping\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -81,7 +81,7 @@ final class ShippingServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadRoutesFrom(__DIR__ . '/../Http/routes.php');
-        $this->mergeConfigFrom(__DIR__ . '/../config/payments.php');
+        $this->mergeConfigFrom(__DIR__ . '/../config/shipping.php');
     }
 }
 ```
@@ -94,7 +94,7 @@ of gathering routes, events, configs, and views has been paid once and is stored
 
 ## Back to the tests
 For every "feature" test (those which extend from Laravel's `Illuminate\Foundation\Testing\TestCase`), the application is built for each test method. Take
-the following trivial test as an example.
+the following trivial test class as an example.
 
 ```php
 
@@ -129,14 +129,15 @@ test method.
 ## Options
 I could have promoted leveraging route, event, configuration caching for tests. Simply run `php artisan optimize --env=testing`. However, the cached files do not
 indicate their environment, so unless you remember to remove these files, calling an endpoint from your browser will pull in the routes defined in the 
-testing environment. In my experience, these tend to be easy to forget about, and in frustration folks will waste time trying to figure out just why their newly
-added route doesn't work. Asking devs to remember to cache before tests and clear cached files after running tests seems ineffective.
+testing environment. In my experience, these cached files tend to be easy to forget about, and in frustration folks will waste time trying to figure out just
+why their newly added route doesn't work. Or perhaps why their local environment is suddenly using test environment variables. Asking devs to remember to
+cache before tests and clear cached files after running tests seems ineffective.
 
 The other option? Role up my sleeves and figure out how this can be optimized at the framework level.
 
 ## `WithCachedRoutes` and `WithCachedConfig` traits
 With the release of Laravel 12.38.0, two new traits were added for optimizing this behavior. `Illuminate\Foundation\Testing\WithCachedRoutes` and 
-``Illuminate\Foundation\Testing\WithCachedConfig` are traits which can be applied to a test (or maybe best of all, the base test case, usually
+`Illuminate\Foundation\Testing\WithCachedConfig` are traits which can be applied to a test (or maybe best of all, the base test case, usually
 `Tests\TestCase`) which memoize the routes and config, respectively.
 
 ```php
@@ -171,6 +172,10 @@ pest()->use(WithCachedRoutes::class);
 
 This works in parallel runners too.
 
+These traits work by grabbing the routes and configuration after they have been built, but before the test runs, and storing it statically.
+When the next test method is spinning up a fresh application instance, it will now use the statically memoized values instead of gathering
+every route and config file.
+
 ## Outcome
 On my local environment, I was able to get parallel test run time down from 07:52 to **04:28**. Being able to run my tests locally and in
 short order means that I can get feedback about my changes rather than pushing something up for review, waiting for the much slower CI
@@ -180,4 +185,4 @@ While this is a huge win, there are still individual tests to improve. Using a t
 be slower than a plain old PHPUnit test. Anything that can be tested via a unit test should be, but for the high confidence that integration
 tests can offer, these traits are a huge win.
 
-Let me know on [X](https://x.com/cosmastech) or comment below how these new traits are improving your test suite runtime.
+Let me know on [X](https://x.com/cosmastech) or comment below how these new traits are improving your test suite run time.
