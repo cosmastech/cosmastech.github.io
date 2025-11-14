@@ -29,9 +29,9 @@ waiting on in the first place.
 ## The Bottleneck
 I had theories. Slow database queries, I figured. A staff engineer reached out to ask me if I saw anything obvious that would be slowing down our application
 boot times. He had taken the effort to convert some of our integrations tests to plain old PHPUnit tests and saw major improvements in the speed. He reported that
-boot times were fine in production. He's a smart guy and I trusted his intuition, so I decided to go down a rabbit hole.
+boot times were fine in production. [He's a smart guy](https://www.linkedin.com/in/chrislewis82/) and I trusted his intuition, so I decided to go down a rabbit hole.
 
-Leveraging [Herd's profiler](https://herd.laravel.com/docs/macos/debugging/profiler#profiling-cli-scripts), I decided to take a look at where our time
+Leveraging [Herd's handy SPX profiler wrapper](https://herd.laravel.com/docs/macos/debugging/profiler#profiling-cli-scripts), I decided to take a look at where our time
 and memory consumption was getting eaten up. What I found was a bit surprising.
 
 In a partial run of our test suite run in series, we were spending a great deal of time and memory preparing routes and loading the configuration. My initial
