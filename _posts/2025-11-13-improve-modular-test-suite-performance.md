@@ -18,11 +18,11 @@ have spent a great deal of my focus on writing tests that don't execute extraneo
 * test a single unit of code when possible
 * leverage `Factory::make()` if writing to the database isn't strictly necessary
 
-These are helpful guidelines, but an unfamiliar codebase with 8000+ tests is not something that can be optimized quickly, if those opportunities even exist.
+These are helpful guidelines, but an unfamiliar codebase with over 19,000 tests is not something that can be optimized quickly, if those opportunities even exist.
 
 ## Wait, it takes how long?
 In our CI pipeline, just the PHPUnit tests were taking between 8 and 10 minutes to execute fully. Heaven help you if you needed something merged quickly.
-The unit tests were going to be the gate. This means we were running about 800 to 1000 tests per minute. Not slow per se, but long enough to lead to context
+The unit tests were going to be the gate. This means we were running about 1900 to 2300 tests per minute. Not slow per se, but long enough to lead to context
 loss. Any process that takes long enough for me to think "Oh, I'll just do <xyz> while I wait" leads to me losing context, and usually forgetting what I was
 waiting on in the first place.
 
@@ -136,8 +136,8 @@ cache before tests and clear cached files after running tests seems ineffective.
 The other option? Role up my sleeves and figure out how this can be optimized at the framework level.
 
 ## `WithCachedRoutes` and `WithCachedConfig` traits
-With the release of Laravel 12.38.0, two new traits were added for optimizing this behavior. `Illuminate\Foundation\Testing\WithCachedRoutes` and 
-`Illuminate\Foundation\Testing\WithCachedConfig` are traits which can be applied to a test (or maybe best of all, the base test case, usually
+With the release of Laravel 12.38.0, two new traits were added for optimizing this behavior. [`Illuminate\Foundation\Testing\WithCachedRoutes`](https://laravel.com/docs/12.x/http-tests#caching-routes) and 
+[`Illuminate\Foundation\Testing\WithCachedConfig`](https://laravel.com/docs/12.x/testing#configuration-caching) are traits which can be applied to a test (or maybe best of all, the base test case, usually
 `Tests\TestCase`) which memoize the routes and config, respectively.
 
 ```php
