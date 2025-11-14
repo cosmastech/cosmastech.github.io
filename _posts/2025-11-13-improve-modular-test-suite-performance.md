@@ -1,5 +1,5 @@
 ---
-title: "Improving unit test run time in Laravel modular monolith"
+title: "Improving unit test run time in a Laravel modular monolith"
 date: 2025-11-13
 tags: Laravel, Testing, modular, PHPUnit
 ---
