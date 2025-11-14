@@ -41,7 +41,7 @@ suspicion about database queries wasn't proving itself to be true.
 In order to allow for domain ownership, modules often mirror the default Laravel application structure.
 
 ```txt
-- src
+src
 ---- Shipping
 -------- config
 ------------ shipping.php
@@ -125,3 +125,59 @@ final class MyTest extends TestCase
 While these tests are pretty trivial, what I want to highlight is what happens before either one of these tests is executed. The entire application boot process
 has to happen, which includes gathering routes from every service provider, as well as configuration. Not just once for the entire class, but one time for **each**
 test method.
+
+## Options
+I could have promoted leveraging route, event, configuration caching for tests. Simply run `php artisan optimize --env=testing`. However, the cached files do not
+indicate their environment, so unless you remember to remove these files, calling an endpoint from your browser will pull in the routes defined in the 
+testing environment. In my experience, these tend to be easy to forget about, and in frustration folks will waste time trying to figure out just why their newly
+added route doesn't work. Asking devs to remember to cache before tests and clear cached files after running tests seems ineffective.
+
+The other option? Role up my sleeves and figure out how this can be optimized at the framework level.
+
+## `WithCachedRoutes` and `WithCachedConfig` traits
+With the release of Laravel 12.38.0, two new traits were added for optimizing this behavior. `Illuminate\Foundation\Testing\WithCachedRoutes` and 
+``Illuminate\Foundation\Testing\WithCachedConfig` are traits which can be applied to a test (or maybe best of all, the base test case, usually
+`Tests\TestCase`) which memoize the routes and config, respectively.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Tests;
+
+use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Foundation\Testing\WithCachedConfig;
+use Illuminate\Foundation\Testing\WithCachedRoutes;
+
+abstract class TestCase extends BaseTestCase
+{
+    use WithCachedRoutes;
+    use WithCachedConfig;
+}
+```
+
+Or, if you prefer the Pest flavor:
+
+```php
+<?php
+
+use Illuminate\Foundation\Testing\WithCachedConfig;
+use Illuminate\Foundation\Testing\WithCachedRoutes;
+
+pest()->use(WithCachedConfig::class);
+pest()->use(WithCachedRoutes::class);
+```
+
+This works in parallel runners too.
+
+## Outcome
+On my local environment, I was able to get parallel test run time down from 07:52 to **04:28**. Being able to run my tests locally and in
+short order means that I can get feedback about my changes rather than pushing something up for review, waiting for the much slower CI
+pipelines to give me feedback. (The CI pipelines are down to about 5 minutes, a marked improvement from where we started.)
+
+While this is a huge win, there are still individual tests to improve. Using a test which boots and tears down the application will always
+be slower than a plain old PHPUnit test. Anything that can be tested via a unit test should be, but for the high confidence that integration
+tests can offer, these traits are a huge win.
+
+Let me know on [X](https://x.com/cosmastech) or comment below how these new traits are improving your test suite runtime.
