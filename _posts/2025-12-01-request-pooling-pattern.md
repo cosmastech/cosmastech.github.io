@@ -63,5 +63,4 @@ during a web request, the caller has to wait for the cumulative time of each req
 | Hotels | 1.9s |
 | Cars | 1.1s |
 | Activities | 0.4s |
-|=|=
-| Total | 4.5s |
+| **Total** | 4.5s |
