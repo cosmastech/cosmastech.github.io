@@ -10,6 +10,7 @@ which will execute any number of HTTP requests concurrently. Under the hood, thi
 [async request functionality of Guzzle](https://docs.guzzlephp.org/en/stable/quickstart.html#async-requests) and
 [cURL's multi handler functionality](https://www.php.net/manual/en/function.curl-multi-init.php).
 
+## Serially Executed Requests Vs Pooled Requests
 Let's imagine we are building a platform for travelers to get the best deals on travel. A traveler needs
 transportation, lodging, a rental vehicle, and recommendations for what to do when they are in town.
 
