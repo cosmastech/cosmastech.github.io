@@ -275,7 +275,7 @@ a Response object.
 ```php
 $bodySize = Http::async()
     ->get('https://cosmastech.com')
-    ->then(fn (Response $response) => strlen($response->getBody()))
+    ->then(fn (Response $response) => strlen($response->body()))
     ->wait();
 ```
 
