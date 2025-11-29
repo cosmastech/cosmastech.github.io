@@ -109,9 +109,19 @@ Now the response wait time is only as long as the slowest request because
 | Activities | 0.4s |
 | **Total** | 1.9s |
 
-**Note**: HTTP pooling doesn't solve all your problems. In many applications, a response from one endpoint
-is used to inform another call in the chain. Use HTTP pooling where it fits, but recognize that the
-sequential nature of some requests is a requirement.
+
+### Notes
+
+The second parameter to `Http::pool()` is named `concurrency` and it informs how many requests should
+be requested simultaneously. If you pass `null` (which is the default), the requests execute serially
+rather than in a batch.
+
+
+#### Silver Bullet?
+
+HTTP pooling doesn't solve all your problems. In many applications, a response from one endpoint
+is used to inform another call in the chain. Use HTTP pooling where it fits, but recognize that
+some requests must still be executed in series.
 
 
 ## What Does pool() Return?
