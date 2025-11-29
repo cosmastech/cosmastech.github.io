@@ -20,7 +20,7 @@ $flightsResponse = Http::post('https://travel-api.example.dev/flights/', [
     'from' => 'New York City, NY',
     'to' => 'San Francisco, CA',
     'departing' => '2026-02-13',
-    'returning' => '2025-02-16',
+    'returning' => '2026-02-16',
 ]);
 
 $hotelsResponse = Http::post('https://hotels-api.example.dev/hotels', [
@@ -76,7 +76,7 @@ $responses = Http::pool(static function (Pool $pool) {
         'from' => 'New York City, NY',
         'to' => 'San Francisco, CA',
         'departing' => '2026-02-13',
-        'returning' => '2025-02-16',
+        'returning' => '2026-02-16',
     ]);
 
     $pool->as('hotels')->post('https://hotels-api.example.dev/hotels', [
@@ -92,10 +92,10 @@ $responses = Http::pool(static function (Pool $pool) {
     ]);
 
     // ...the other requests
-});
+}, concurrency: 4);
 ```
 
-Now the response wait time is only as long as the slowest request.
+Now the response wait time is only as long as the slowest request because
 
 | Request | Time |
 |---------|-------|
@@ -216,7 +216,7 @@ $responses = Http::pool(static function (Pool $pool) {
             'from' => 'New York City, NY',
             'to' => 'San Francisco, CA',
             'departing' => '2026-02-13',
-            'returning' => '2025-02-16',
+            'returning' => '2026-02-16',
         ])
         ->then(
             (new GetFlights)->mapResponseToAvailableFlights(...)
@@ -263,6 +263,9 @@ use Illuminate\Support\Facades\Http;
 
 class GetFlights
 {
+    /**
+     * @param  array<string, mixed>  $flightRequestBody
+     */
     public function fromPendingRequest(
         array $flightRequestBody,
         ?PendingRequest $pendingRequest = null
@@ -275,8 +278,96 @@ class GetFlights
             ->then($this->mapResponseToAvailableFlights(...));
     }
 
+    /**
+     * Retrieve available flights.
+     *
+     * @param  array<string, mixed>  $flightRequestBody
+     * @return list<AvailableFlight>
+     *
+     * @throw RuntimeException when there is request failure
+     */
     public function fetch(array $flightRequestBody): array
     {
+        $result = $this->fromPendingRequest(
+            $flightRequestBody
+        )->wait();
 
+        if ($result instanceof ServiceUnavailableResponse) {
+            throw new RuntimeException('Service unavailable');
+        }
+
+        return $result;
     }
+
+    /* ... */
+}
 ```
+
+With these simple additions, we can get our flight via pooling or as a one-off, and it
+will always be immediately mapped to our AvailableFlight data object.
+
+```php
+$flightGetter = new GetFlights;
+
+$requestPayload = [
+    'from' => 'Erie, PA',
+    'to' => 'Little Rock, AR',
+    'departing' => '2026-01-11',
+    'returning' => '2026-02-13',
+];
+
+// Get in a pool
+$responses = Http::pool(function (Pool $pool) use ($flightGetter, $requestPayload) {
+    $flightGetter->fromPendingRequest(
+        $requestPayload,
+        $pool->as('flights')
+    );
+
+    /* ... other pooled requests ... */
+}, concurrency: 4);
+
+// Or use it as a one-off
+$availableFlights = $flightGetter->fetch($requestPayload);
+```
+
+
+### Why Does This Work?
+HTTP Pooling works by keeping an array of PendingRequest objects, all of which are async by default.
+When the pool() method executes, it is just awaiting an array of promises, for which we already chained
+a `then()` method to map them into the object we want. For our one-off request case (`GetFlights@fetch()`),
+we are creating a new PendingRequest and marking it as async via `$pendingRequest->async()`. We do this
+not because the request will be handled concurrently with other requests, but because we want to share the
+promise chaining.
+
+
+## Why?
+
+I came to this pattern as I was refactoring some code which felt a bit sluggish. The sluggishness was
+a result of sequential requests to an external API. When these methods were written initially, they
+worked fine, because we didn't need to gather anything. The frontend of the web application called
+a separate application endpoint for flights, for hotels, for cars, etc. In that way, they were
+able to be called asynchronously.
+
+As we move towards a single endpoint returning all of gathered data, the series of requests
+becomes a bottleneck. But for a product which releases code multiple times per day, and for
+whom some service methods still needed to be used one-by-one, this feels like an elegant solution:
+we have one class which is responsible for building a request and mapping it to a data transfer object,
+but the request can be made in a batch or one-by-one.
+
+The approach to refactoring is first to create each `Get*` class. Next we will move our existing
+service methods to call this class using the `fetch()` method. Finally, we seek out opportunities
+for pooling, and in those cases, refactor to the `fromPendingRequest()` method inside of an HTTP pool
+rather than calling the service method.
+
+
+# In Closing
+
+When I was working towards this pattern, I felt like I had just discovered some kind of magic. PHP
+can be called anachronistic for its runtime model of one process per request. However, it still offers
+excellent developer ergonomics: we don't have to think about threads, function coloring, or manually
+cleaning up the application at the end of a request. The ability to pool our HTTP requests to avoid
+sequential slowness is a big win for developers.
+
+---
+Are you using HTTP pooling in your application? Got big thoughts on promises? Did I make a mistake
+in this post and you want to bring it to my attention? Drop a comment below or find me on [X](https://x.com/cosmastech).
