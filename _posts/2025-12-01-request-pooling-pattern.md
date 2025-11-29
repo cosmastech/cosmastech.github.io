@@ -10,7 +10,9 @@ which will execute any number of HTTP requests concurrently. Under the hood, thi
 [async request functionality of Guzzle](https://docs.guzzlephp.org/en/stable/quickstart.html#async-requests) and
 [cURL's multi handler functionality](https://www.php.net/manual/en/function.curl-multi-init.php).
 
+
 ## Serially Executed Requests Vs Pooled Requests
+
 Let's imagine we are building a platform for travelers to get the best deals on travel. A traveler needs
 transportation, lodging, a rental vehicle, and recommendations for what to do when they are in town.
 
@@ -116,9 +118,9 @@ sequential nature of some requests is a requirement.
 
 `Http::pool()` returns an array with each value being one of:
 
-* `\Illuminate\Http\Client\ConnectionException` meaning there was a timeout trying to connect to the server
-* `\Illuminate\Http\Client\Response` a response object if the request received a response
-* `\Illuminate\Http\Client\RequestException` if you marked that you want your request to `throw()` on failing status codes
+* `Illuminate\Http\Client\ConnectionException` meaning there was a timeout trying to connect to the server
+* `Illuminate\Http\Client\Response` a response object if the request received a response
+* `Illuminate\Http\Client\RequestException` if you marked that you want your request to `throw()` on failing status codes
 
 Let's take the last example and see how we might use the responses.
 
@@ -259,6 +261,7 @@ if ($responses['flights'] instanceof ServiceUnavailableResponse) {
   // now we have an array of AvailableFlight
 }
 ```
+
 
 ## Making It More Extensible Still
 
