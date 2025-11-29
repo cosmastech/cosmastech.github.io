@@ -114,7 +114,7 @@ Now the response wait time is only as long as the slowest request because
 
 The second parameter to `Http::pool()` is named `concurrency` and it informs how many requests should
 be requested simultaneously. If you pass `null` (which is the default), the requests execute serially
-rather than in a batch.
+rather than concurrently.
 
 
 #### Silver Bullet?
