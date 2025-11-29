@@ -10,8 +10,8 @@ which will execute any number of HTTP requests concurrently. Under the hood, thi
 [async request functionality of Guzzle](https://docs.guzzlephp.org/en/stable/quickstart.html#async-requests) and
 [cURL's multi handler functionality](https://www.php.net/manual/en/function.curl-multi-init.php).
 
-Let's imagine we are building a platform for travels to get the best deals on travel. A traveler needs
-to transportation, lodging, a rental vehicle, and recommendations for what to do when they are in town.
+Let's imagine we are building a platform for travelers to get the best deals on travel. A traveler needs
+transportation, lodging, a rental vehicle, and recommendations for what to do when they are in town.
 
 ```php
 use Illuminate\Support\Facades\Http;
@@ -54,8 +54,9 @@ $activitiesResponse = Http::get('https://around-town-api.example.dev/SF-CA-USA',
 ]);
 ```
 
-This above example gathers all of this data, but it does so sequentially. If this data is all gathered
-during a web request, the caller has to wait for the cumulative time of each request.
+The above example gathers all of this data, but it does so sequentially. If this data is all gathered
+during a web request, the caller has to wait for the cumulative time of all requests. For instance,
+imagine this is the response time for each:
 
 | Request | Time |
 |---------|-------|
@@ -121,6 +122,24 @@ sequential nature of some requests is a requirement.
 Let's take the last example and see how we might use the responses.
 
 ```php
+namespace App\Schema;
+
+use Carbon\CarbonImmutable;
+
+final readonly class AvailableFlight
+{
+    public function __construct(
+        public string $airline,
+        public string $airport,
+        public CarbonImmutable $departure,
+        public string $cost,
+    ){
+        // ...
+    }
+}
+```
+
+```php
 use Carbon\CarbonImmutable;
 use App\Schema\AvailableFlight;
 use App\Schema\ServiceUnavailableResponse;
@@ -151,16 +170,21 @@ If you're like me, there's something off about putting all of this mapping logic
 method of a service class. I want there to be single responsibility, not because Uncle Bob told me
 so, but because I want to be able to test my code at the component level. And of course, there's
 that gnawing feeling that "maybe I'll need to use this in another place," but more on that later.
+What if I had a class that was responsible for mapping Laravel's response into my data object?
+I could then test this function in isolation, giving me confidence it behaves as desired given
+different scenarios, such as "what if a key is missing? what if the connection times out? what
+if the API returns a 500 response code?"
 
 
 ## Promises To the Rescue
 
 As mentioned above, the async nature of HTTP requests is made possible thanks to Guzzle's
-[Promises](https://github.com/guzzle/promises) library. Because PHP is not async by nature,
-the promises offered are closer to Laravel's [Pipeline](https://laravel.com/docs/12.x/helpers#pipeline)
-than they are to promises in JavaScript. They just so happen to be used by async requests.
+[Promises](https://github.com/guzzle/promises) library. Because the PHP runtime is not async by nature,
+the Promises offered are closer to Laravel's [Pipeline](https://laravel.com/docs/12.x/helpers#pipeline)
+than they are to Promises in JavaScript. While Guzzle can execute HTTP requests concurrently, Promises
+can be used to simply pipe the results of one function into another.
 
-The promise interface allows us to chain mutations together and then wait for each link in the chain
+The Promise interface allows us to chain mutations together and then wait for each link in the chain
 to be resolved. We can pipe our Response into a method and have it give us back a POPO (or Laravel Data
 object if you fancy).
 
@@ -169,6 +193,7 @@ namespace App\Requests;
 
 use App\Schema\AvailableFlight;
 use App\Schema\ServiceUnavailableResponse;
+use Carbon\CarbonImmutable;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Client\Response;
@@ -207,7 +232,8 @@ class GetFlights // This name will make more sense in a moment
 }
 ```
 
-Now we can leverage the `then()` method on our promise.
+Now we can leverage the `then()` method on our Promise. The `then()` method executes a callback against
+the Response.
 
 ```php
 $responses = Http::pool(static function (Pool $pool) {
@@ -253,13 +279,15 @@ $bodySize = Http::async()
 
 In the above, we are making a single request that will return the character count of a webpage.
 
-So how can we use this as a lever for better devex and eliminating duplication? Let's add a few more
-methods to our GetFlights class.
+Above I mentioned how we may want to use our request building and mapping logic in another place. So how can
+we use this as a lever for better devex and eliminating duplication? Let's add a few more methods to our
+GetFlights class.
 
 ```php
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
+use RuntimeException;
 
 class GetFlights
 {
@@ -332,20 +360,20 @@ $availableFlights = $flightGetter->fetch($requestPayload);
 
 
 ### Why Does This Work?
-HTTP Pooling works by keeping an array of PendingRequest objects, all of which are async by default.
-When the pool() method executes, it is just awaiting an array of promises, for which we already chained
-a `then()` method to map them into the object we want. For our one-off request case (`GetFlights@fetch()`),
-we are creating a new PendingRequest and marking it as async via `$pendingRequest->async()`. We do this
-not because the request will be handled concurrently with other requests, but because we want to share the
-promise chaining.
+HTTP Pooling works by keeping an array of PendingRequest objects, all of which are have their async
+property set to true by default. When the pool() method executes, it is just awaiting an array of Promises,
+for which we already chained a `then()` method to map them into the object we want. For our one-off
+request case (`GetFlights@fetch()`), we are creating a new PendingRequest and marking it as async
+via `$pendingRequest->async()`. We do this not because the request will be handled concurrently with
+other requests, but because we want to share the Promise chaining.
 
 
 ## Why?
 
-I came to this pattern as I was refactoring some code which felt a bit sluggish. The sluggishness was
+I came to this pattern as I was refactoring some endpoints which were very slow. The sluggishness was
 a result of sequential requests to an external API. When these methods were written initially, they
-worked fine, because we didn't need to gather anything. The frontend of the web application called
-a separate application endpoint for flights, for hotels, for cars, etc. In that way, they were
+worked fine, because we didn't need to gather everything at once. The frontend of the web application
+called a separate application endpoint for flights, for hotels, for cars, etc. In that way, they were
 able to be called asynchronously.
 
 As we move towards a single endpoint returning all of gathered data, the series of requests
@@ -369,5 +397,5 @@ cleaning up the application at the end of a request. The ability to pool our HTT
 sequential slowness is a big win for developers.
 
 ---
-Are you using HTTP pooling in your application? Got big thoughts on promises? Did I make a mistake
+Are you using HTTP pooling in your application? Got big thoughts on Promises? Did I make a mistake
 in this post and you want to bring it to my attention? Drop a comment below or find me on [X](https://x.com/cosmastech).
