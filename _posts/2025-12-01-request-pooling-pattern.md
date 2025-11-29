@@ -171,6 +171,7 @@ If you're like me, there's something off about putting all of this mapping logic
 method of a service class. I want there to be single responsibility, not because Uncle Bob told me
 so, but because I want to be able to test my code at the component level. And of course, there's
 that gnawing feeling that "maybe I'll need to use this in another place," but more on that later.
+
 What if I had a class that was responsible for mapping Laravel's response into my data object?
 I could then test this function in isolation, giving me confidence it behaves as desired given
 different scenarios, such as "what if a key is missing? what if the connection times out? what
@@ -186,7 +187,7 @@ than they are to Promises in JavaScript. While Guzzle can execute HTTP requests 
 can be used to simply pipe the results of one function into another.
 
 The Promise interface allows us to chain mutations together and then wait for each link in the chain
-to be resolved. We can pipe our Response into a method and have it give us back a POPO (or
+to be resolved. For instance, we can pipe our Response into a method and have it give us back a POPO (or
 [Laravel Data](https://spatie.be/docs/laravel-data/v4/introduction) object if you fancy).
 
 ```php
