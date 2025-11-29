@@ -185,8 +185,8 @@ than they are to Promises in JavaScript. While Guzzle can execute HTTP requests 
 can be used to simply pipe the results of one function into another.
 
 The Promise interface allows us to chain mutations together and then wait for each link in the chain
-to be resolved. We can pipe our Response into a method and have it give us back a POPO (or Laravel Data
-object if you fancy).
+to be resolved. We can pipe our Response into a method and have it give us back a POPO (or
+[Laravel Data](https://spatie.be/docs/laravel-data/v4/introduction) object if you fancy).
 
 ```php
 namespace App\Requests;
