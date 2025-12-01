@@ -342,7 +342,36 @@ class GetFlights
         return $result;
     }
 
-    /* ... */
+    /* code below from previous example */
+
+    public function mapToAvailableFlight(array $flight): AvailableFlight
+    {
+        return new AvailableFlight(
+            airline: $flight['carrier'],
+            airport: $flight['airport'],
+            departure: CarbonImmutable::parse($flight['departing']),
+            cost: (string) $flight['price'],
+        );
+    }
+
+    /**
+     * @return  list<AvailableFlight>|ServiceUnavailableResponse
+     */
+    public function mapResponseToAvailableFlights(
+        Response|RequestException|ConnectionException $flightsResponse
+    ): array|ServiceUnavailableResponse {
+        if ($flightsResponse instanceof Throwable) {
+            return new ServiceUnavailableResponse;
+        }
+
+        $flights = [];
+
+        foreach($flightsResponse->json()['results'] as $flight) {
+            $flights[] = $this->mapToAvailableFlight($flight);
+        }
+
+        return $flights;
+    }
 }
 ```
 
