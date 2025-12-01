@@ -1,6 +1,6 @@
 ---
 title: "Leveraging Promises and HTTP Pooling"
-date: 2025-11-30
+date: 2025-12-01
 tags: Laravel, async, pooling, HTTP
 ---
 
@@ -113,8 +113,8 @@ Now the response wait time is only as long as the slowest request because
 ### Notes
 
 The second parameter to `Http::pool()` is named `concurrency` and it informs how many requests should
-be requested simultaneously. If you pass `null` (which is the default), the requests execute serially
-rather than concurrently.
+be in flight at any given time. If you have 10 requests with `$concurrency` set to 5, the sixth request
+will not start until the first is complete.
 
 
 #### Silver Bullet?
