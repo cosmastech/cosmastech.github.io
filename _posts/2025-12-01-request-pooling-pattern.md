@@ -246,7 +246,7 @@ class GetFlights // This name will make more sense in a moment
 }
 ```
 
-Now we can leverage the `then()` method on our Promise. The `then()` method executes a callback against
+With the release of **Laravel 12.41**, we can leverage the `then()` method on our Promise. The `then()` method executes a callback against
 the Response.
 
 ```php
