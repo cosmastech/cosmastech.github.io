@@ -246,8 +246,8 @@ class GetFlights // This name will make more sense in a moment
 }
 ```
 
-With the release of **Laravel 12.41**, we can leverage the `then()` method on our Promise. The `then()` method executes a callback against
-the Response.
+With the release of [Laravel 12.41](https://github.com/laravel/framework/releases/tag/v12.41.0), we can leverage the `then()` method on our Promise.
+The `then()` method executes a callback against the Response.
 
 ```php
 $responses = Http::pool(static function (Pool $pool) {
