@@ -34,7 +34,17 @@ There are big payoffs for understanding (at even a basic level) how things like 
 
 There are plenty of things that I won't use in Laravel because I recognize they don't fit my use case. Hey, [have I mentioned that I don't like model events and observers](https://cosmastech.com/2024/08/18/laravel-observers-and-models.html)?  They cause indirection, don't fire when inserting records in bulk, and are hard to discover. So I don't use them for projects I work on.
 
-But it's important to note that while some things are difficult to use at scale work great for a single developer who has the entire project in their head.
+But it's important to note that while some things are difficult to use at scale work great for a single developer who has the entire project in their head. I encourage you to consider your working environment with an open-mind, doing your best to not be emotionally attached to the code you have written.
+
+For those who are interested, I like Models to function as:
+
+* a simple data holder with appropriate casts and maybe some "ask me about" methods (`canReceiveStripePayments()`)
+* a way to query for related Models via relationships
+* an excellent query builder with convenient scopes
+* a novel way to think about my data access patterns
+* building blocks of integration tests through Factories
+
+I don't put a lot of functional logic in them. I do not feel these Models don't suffer from anemia, they thrive.
 
 
 ## Dogma versus Pragmatism
