@@ -136,4 +136,6 @@ One of my favorite of Jack Kerouac's "western" haikus:
 
 Take a moment to read that slowly. Each of its eight simple words is integral. There is no fat, no muscle, just bone. It brings to life an entire story. Would it be better if it were smushed together as one-long line? Would it be as effective or as joyful to read if it rambled longer, with greater embellishment?
 
-A haiku is about paring away the unnecessary until we have essence. Writing code is not an ancient art of Zen masters, but neither is it a hard science without deviation. There are no masters of software engineering who can dictate precisely how effective code is written for you, your domain, or your team. Simplicity is found by sculpting away complexity until what we have is essence.
+A haiku is about paring away the unnecessary until we have essence. Writing code is not an ancient art of Zen masters, but neither is it a hard science without deviation. There are no masters of software engineering who can dictate precisely how effective code is written for you, your domain, or your team.
+
+Simplicity is found by sculpting away complexity until what we have left is essence.
