@@ -56,12 +56,14 @@ Holding fast to rules in the face of a reality to the contrary is a recipe for c
 For instance, repositories. I have written them. They end up looking like this:
 
 ```php
-// Use the suffix -Entity because I know the technical distinction between an entity and a value object
-// and it's VERY important you know that I know. (This is a true story.)
+// Use the suffix -Entity because I know the technical distinction
+// between an entity and a value object and it's VERY important
+// you know that I know. (This is a true story.)
 final readonly class UserEntity
 {
     public function __construct(
-        // private because TECHNICALLY no other developer should be allowed to know our secret integer ID
+        // private because TECHNICALLY no other developer
+        // should be allowed to know our secret integer ID
         private int $id,
         public string $uuid,
         public string $firstName,
@@ -69,10 +71,11 @@ final readonly class UserEntity
         public EmailAddress $emailAddress,
     ) { }
     
-    public function updateEmail(EmailAddress $email): UserEntity
+    public function setEmail(EmailAddress $email): UserEntity
     {
-        // this probably does something great, but everything must be immutable,
-        // so I'll definitely want to clone this object and return a new one
+        // this probably does something great, but everything must
+        // be immutable, so I'll definitely want to clone this
+        // object and return a new one
     }
     
     public function flush(): array
