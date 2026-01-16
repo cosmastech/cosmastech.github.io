@@ -20,4 +20,68 @@ What's the opposite of inherent complexity? It's accidental complexity. It's the
 
 ## Our Tools
 
-I am a little bit of a Laravel evangelist, it seems. Who knew? I have worked with Laravel for around 5 years, and I have come to intimately understand the framework and its internals. The selling point of a batteries-included, rapid application development web framework is you can get something that just works in less time than it takes to roll your own. It's not reasonable to expect everyone who drives a car to be able to rebuild an engine or even explain how it works. Similarly, it's not reasonable to expect everyone who uses Laravel to know about each feature that gets added to the framework, often times a dozen or more in a week.
+I am a little bit of a Laravel evangelist, it seems. Who knew? I have worked with Laravel for around 5 years, and I have come to intimately understand the framework and its internals. The selling point of a batteries-included, rapid application development web framework is you can get something that just works in less time than it takes to roll your own. It's not reasonable to expect everyone who drives a car to be able to rebuild an engine or even explain how it works. Similarly, it's not reasonable to expect everyone who uses Laravel to study the release notes to see which features were added to the framework, often times a dozen or more in a week.
+
+For those who do keep apprised of changes to their tools, they can see the tool often evolves to meet needs of other folks. When the tools change, oftentimes it is to solve a problem that I may have too. One of the secrets about why I contribute so frequently to Laravel is because I have problems that I want solved at the first-party level. I don't want to have to build hacky workarounds or extend and override classes to get the functionality I need. Let Taylor handle the maintenance. :laugh:
+
+### Use the Magic, but Understand the Magic
+
+Frameworks like Laravel, Rails, and Django can be disliked. Sometimes for the opinions then strongly enforce, or because they have too much magic. I cannot say that Laravel doesn't have lots of magic. I'm a curious person and I don't like magicians because I just want to know how they do the trick. I'm also a software developer who can read PHP and has a step debugger; I can see exactly how the magician does the trick. None of us is too busy to get a baseline understanding of how our tools work.
+
+There are big payoffs for understanding (at even a basic level) how things like queued jobs work end-to-end; models and relationships execute queries; and how the Container magically slots in your dependencies. Knowing little bits of the magic gave me that feeling of being in control, the same feeling of control I get if I were to roll it all by hand.
+
+### But You Don't Have To Use All the Magic
+
+There are plenty of things that I won't use in Laravel because I recognize they don't fit my use case. Hey, [have I mentioned that I don't like model events and observers](https://cosmastech.com/2024/08/18/laravel-observers-and-models.html)?  They cause indirection, don't fire when inserting records in bulk, and are hard to discover. So I don't use them for projects I work on.
+
+But it's important to note that while some things are difficult to use at scale work great for a single developer who has the entire project in their head.
+
+
+## Dogma versus Pragmatism
+
+I have read Clean Code. I have implemented Clean Code. I have been sad.
+
+Holding fast to rules in the face of a reality to the contrary is a recipe for complexity without payoff. We must be like trees in the wind, bending don't so we don't snap. I had a mentor early on who, after me asking what the rule is for something, would tell me "you have to use your brain." Being realistic about the size of a project or the makeup of my team bears better fruit than any book or blog post.
+
+For instance, repositories. I have written them. They end up looking like this:
+
+```php
+// Use the suffix -Entity because I know the technical distinction between an entity and a value object
+// and it's VERY important you know that I know. (This is a true story.)
+final readonly class UserEntity
+{
+    public function __construct(
+        // private because TECHNICALLY no other developer should be allowed to know our secret integer ID
+        private int $id,
+        public string $uuid,
+        public string $firstName,
+        public string $lastName,
+        public EmailAddress $emailAddress,
+    ) { }
+    
+    public function updateEmail(EmailAddress $email): UserEntity
+    {
+        // this probably does something great, but everything must be immutable,
+        // so I'll definitely want to clone this object and return a new one
+    }
+    
+    public function flush(): array
+    {
+        // Outbox pattern mentioned!
+    }
+}
+
+final readonly class UserRepository implements UserRepositoryInterface
+{
+    public function get(string $uuid): ?UserEntity
+    {
+        return User::query()->firstWhere('uuid', $uuid)?->toEntity();
+    }
+}
+```
+
+They end up wrapping Eloquent functionality, but with worse developer experience. Each time I need to do a slightly different query, I end up writing a new repository method. If I add a property to a core entity, trust and believe, I'm now going to have to update `UserEntity`, `UserMapper`, `UserRepository@update()` and `UserRepository@create()`, and probably a bunch of other places.
+
+...oh and all of those unit tests I wrote! :sweat:
+
+Is Eloquent always right for the job? No. The questions to ask are: how does this complexity serve us? Does it make our business more attractive to clients? Does it allow us to ship features faster? Does it make it easier to change our code now and in the future? Is it easier for an LLM to parse and generate code for? Does it make it easier to debug? What are we protecting ourselves from? What would happen if we made it easier?
