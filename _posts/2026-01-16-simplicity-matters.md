@@ -6,7 +6,7 @@ tags: software engineering
 
 Simplicity matters. It's important for humans and our tiny brains. It's important for AI Agents with their tiny context windows. It's important for businesses that are fighting and clawing for market share as competitors clone their product in a span of months.
 
-And simplicity is hard. It's hard because it takes experience to know what is essential and what makes it hard to understand. Seeing our code through the eyes of a new developer is nearly impossible, so when you get a new person working on your project, their insight can be priceless and unparalleled.
+And simplicity is hard. It's hard because it takes experience to discern between what is essential and what is just harder than it needs to be. Seeing our code through the eyes of a new developer is nearly impossible, so when you get a new person working on your project, their insight can be priceless and unparalleled.
 
 Simplicity also takes discipline. Morgan Housel, in his book [Same as Ever: Timeless Lessons on Risk, Opportunity and Living a Good Life](https://www.amazon.com/Same-Ever-Guide-Never-Changes/dp/0593332709), writes "Complexity gives a comforting impression of control, while simplicity is hard to distinguish from cluelessness." We write long docs because a few simple phrases make us sound like we're not earning our keep. It's hard to admit that a lot of my work amounts to API endpoints and basic CRUD operations... I'm not writing video games or compilers. I've written complicated abstractions to keep my brain busy, to feel useful, to have something to do. I will tell you that it's highly likely I was unaware at the time, but I can see in retrospect that I introduced complexity.
 
