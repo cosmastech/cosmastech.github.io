@@ -126,7 +126,9 @@ So at the end of four months on the first leg of the project, I was able to admi
 One of my favorite of Jack Kerouac's "western" haikus:
 
 > Perfect moonlit night
+>
 >  marred
+>
 > By family squabbles.
 
 Take a moment to read that slowly. Each of its eight simple words is integral. There is no fat, no muscle, just bone. It brings to life an entire story. Would it be better if it were smushed together as one-long line? Would it be as effective or as joyful to read if it rambled longer, with greater embellishment?
