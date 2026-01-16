@@ -122,7 +122,7 @@ I was assigned to build a project a few years ago, starting totally from scratch
 
 A batteries-included framework has strong opinions and therefore architecture choices can be reduced or foregone. LLMs trained on blog posts and docs love familiar conventions and patterns. New hires can jump in without re-learning all the architecture choices which you documented so thoroughly. ...you did document all of your architecture decisions, right?
 
-So at the end of four months on the first leg of the project, I was able to admit honestly I made choices that hurt future me. By sticking with the project, I was able to see the consequences of choices made. It's disheartening to see negative consequences of those choices, but that also shows I am growth and learning (dare I say wisdom?). I continued on with the project and made a pivot towards greater simplicity. And six months after that, I saw improvements in many areas, but still things that I felt were a little bit ugly. Evidence that I still have more to learn.
+So at the end of four months on the first leg of the project, I was able to admit honestly I made choices that hurt future me. By sticking with the project, I was able to see the consequences of choices made. It's disheartening to see negative consequences of those choices, but that also shows growth and learning (dare I say wisdom?). I continued on with the project and made a pivot towards greater simplicity. And six months after that, I saw improvements in many areas, but still things that I felt were a little bit ugly. Evidence that I still have more to learn.
 
 ## I Tuned Out A While Ago, Are You About Done?
 
