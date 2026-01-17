@@ -18,6 +18,11 @@ google_analytics: G-0DQ0ZDHJ5Y
 defaults:
   - scope:
       path: ""
+      type: "posts"
+    values:
+      layout: post
+  - scope:
+      path: ""
     values:
       logo: https://cosmastech.com/assets/cosmastech_logo.png
       image:
