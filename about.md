@@ -19,4 +19,4 @@ Why tell you about myself when I can let robots do it?
 
 ## Get in Touch
 
-You can find me on [GitHub](https://github.com/cosmastech), [Twitter/X](https://twitter.com/cosmastech), or [LinkedIn](https://www.linkedin.com/in/luke-kuzmish-73a68b205/).
+You can find me on [GitHub](https://github.com/cosmastech), [X](https://twitter.com/cosmastech), or [LinkedIn](https://www.linkedin.com/in/luke-kuzmish-73a68b205/).
