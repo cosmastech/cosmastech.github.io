@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
-source: "https://rubygems.org"
+source "https://rubygems.org"
 
-gem 'jemoji'
-gem 'jekyll-seo-tag'
+gem "jekyll", "~> 4.3"
+gem "minima", "~> 2.5"
+gem "jemoji"
+gem "jekyll-seo-tag"
 
-gemspec
+# Required for Ruby 3.0+
+gem "webrick"

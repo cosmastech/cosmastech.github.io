@@ -1,5 +1,9 @@
 ---
-title: Luke Kuzmish
+layout: home
 ---
 
-Coding, open-source, PHP, Laravel
+# Luke Kuzmish
+
+Software Engineer writing about PHP, Laravel, and open-source.
+
+[About me](/about/) / [What I'm up to now](/now/)
