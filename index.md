@@ -1,5 +1,4 @@
 ---
+layout: home
 title: Luke Kuzmish
 ---
-
-Coding, open-source, PHP, Laravel

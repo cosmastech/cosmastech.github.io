@@ -7,15 +7,16 @@ url: https://cosmastech.com
 logo: https://cosmastech.com/assets/cosmastech_logo.png
 
 #minima variables
-github_username:   cosmastech
+github_username: cosmastech
+twitter_username: cosmastech
+linkedin_username: luke-kuzmish-73a68b205
 comments_repo: cosmastech/cosmastech.github.io
 
 # Google Analytics
 google_analytics: G-0DQ0ZDHJ5Y
 
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
     values:
       logo: https://cosmastech.com/assets/cosmastech_logo.png
