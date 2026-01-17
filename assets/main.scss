@@ -298,6 +298,23 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: $spacing-unit;
 }
 
+// About page photo
+.about-photo {
+  float: right;
+  margin: 0 0 1em 1.5em;
+  max-width: 180px;
+  border-radius: 8px;
+}
+
+@media screen and (max-width: 600px) {
+  .about-photo {
+    float: none;
+    display: block;
+    margin: 0 auto 1.5em;
+    max-width: 150px;
+  }
+}
+
 // Tables
 table {
   width: 100%;
