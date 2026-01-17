@@ -1,0 +1,168 @@
+// Custom overrides for Minima theme
+
+// Tighter spacing
+$spacing-unit: 24px;
+
+// Wider content area
+$content-width: 860px;
+
+// Accent color - a nice teal that works well for tech blogs
+$brand-color: #0891b2;
+
+// Slightly softer text
+$text-color: #1f2937;
+$background-color: #ffffff;
+
+// Better greys
+$grey-color: #6b7280;
+$grey-color-light: #e5e7eb;
+$grey-color-dark: #374151;
+
+// Code block styling
+$code-font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+// Custom styles applied after Minima imports
+.custom-styles {
+  // Code blocks
+  pre,
+  code {
+    font-family: $code-font-family;
+    font-size: 0.9em;
+    border-radius: 6px;
+  }
+
+  // Inline code
+  code {
+    background-color: #f3f4f6;
+    padding: 0.2em 0.4em;
+    border: none;
+  }
+
+  // Code blocks
+  pre {
+    background-color: #1e293b;
+    border: none;
+    padding: 1.25em;
+    overflow-x: auto;
+
+    code {
+      background-color: transparent;
+      padding: 0;
+      color: #e2e8f0;
+    }
+  }
+
+  // Syntax highlighting - dark theme
+  .highlight {
+    background-color: #1e293b;
+    border-radius: 6px;
+
+    // Comments
+    .c, .c1, .cm, .cs, .cd {
+      color: #64748b;
+      font-style: italic;
+    }
+
+    // Strings
+    .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr {
+      color: #86efac;
+    }
+
+    // Keywords
+    .k, .kc, .kd, .kn, .kp, .kr, .kt, .kv {
+      color: #c4b5fd;
+    }
+
+    // Numbers
+    .m, .mb, .mf, .mh, .mi, .mo, .mx {
+      color: #fde68a;
+    }
+
+    // Functions/methods
+    .nf, .fm {
+      color: #7dd3fc;
+    }
+
+    // Classes
+    .nc, .nn {
+      color: #fcd34d;
+    }
+
+    // Variables
+    .nv, .vi, .vg, .vc {
+      color: #f0abfc;
+    }
+
+    // Operators
+    .o, .ow {
+      color: #94a3b8;
+    }
+
+    // Punctuation
+    .p {
+      color: #cbd5e1;
+    }
+
+    // Attributes
+    .na {
+      color: #7dd3fc;
+    }
+
+    // Tags (HTML)
+    .nt {
+      color: #f472b6;
+    }
+  }
+
+  // Better link styling
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  // Post list improvements
+  .post-list {
+    h3 {
+      margin-bottom: 0.25em;
+    }
+  }
+
+  // Cleaner post meta
+  .post-meta {
+    font-size: 0.875em;
+    color: $grey-color;
+  }
+
+  // Better blockquotes
+  blockquote {
+    border-left: 3px solid $brand-color;
+    padding-left: 1em;
+    color: $grey-color-dark;
+    font-style: normal;
+  }
+
+  // Headings with better weight
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: $text-color;
+  }
+
+  // Cleaner footer
+  .site-footer {
+    border-top: 1px solid $grey-color-light;
+  }
+
+  // Header tweaks
+  .site-header {
+    border-top: 3px solid $brand-color;
+    border-bottom: 1px solid $grey-color-light;
+  }
+
+  .site-title {
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
+}

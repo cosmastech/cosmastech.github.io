@@ -2,10 +2,11 @@
     {%- if site.email -%}
     <li>
         <a href="mailto:{{ site.email }}"
-            ><svg class="svg-icon">
-                <use
-                    xlink:href="{{ '/assets/minima-social-icons.svg#email' | relative_url }}"
-                ></use>
+            ><svg class="svg-icon" viewBox="0 0 16 16">
+                <path
+                    fill="currentColor"
+                    d="M2 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l5 3.125 5-3.125V4a1 1 0 0 0-1-1H4zm9 2.441-4.322 2.701a1 1 0 0 1-1.356 0L3 5.441V12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5.441z"
+                />
             </svg>
             <span class="username">{{ site.email | escape }}</span></a
         >

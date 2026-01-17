@@ -6,6 +6,12 @@ description: Thoughts and tutorials on open-source with a focus on PHP/Laravel
 url: https://cosmastech.com
 logo: https://cosmastech.com/assets/cosmastech_logo.png
 
+# Header navigation - only show these pages
+header_pages:
+  - about.md
+  - writing.md
+  - now.md
+
 #minima variables
 github_username: cosmastech
 twitter_username: cosmastech
