@@ -183,11 +183,14 @@ a {
 
 // Better blockquotes
 blockquote {
-  border-left: 3px solid $brand-color;
-  padding-left: 1.25em;
-  color: $grey-color-dark;
-  font-style: normal;
-  margin-left: 0;
+  border-left: 3px solid $brand-color !important;
+  padding-left: 1.25em !important;
+  color: $grey-color !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  margin-left: 0 !important;
+  font-size: 0.95em !important;
+  letter-spacing: normal !important;
 
   > :last-child {
     margin-bottom: 0;
@@ -224,6 +227,31 @@ h1, h2, h3, h4, h5, h6 {
 .footer-heading {
   font-size: 1.125rem;
   font-weight: 600;
+}
+
+// Two-column footer layout
+.footer-two-col {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer-col-left {
+  width: 50%;
+
+  .p-name {
+    font-weight: 600;
+    margin-bottom: 0.25em;
+  }
+
+  .footer-description {
+    color: $grey-color;
+    margin-bottom: 0.5em;
+  }
+}
+
+.footer-col-right {
+  width: auto;
 }
 
 // Social links in footer - cleaner look
