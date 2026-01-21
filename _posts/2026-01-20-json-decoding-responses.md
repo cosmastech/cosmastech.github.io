@@ -75,4 +75,4 @@ Http::get('https://cosmastech.com')->json(flags: 0); // use default json_decode 
 
 ## Use Flags
 
-Trying to remember to always pass these flags at every call site can be a really arduous task. If you can, try to set sensible defaults for how JSON is decoded in your Laravel application.
+Trying to remember to always pass these flags at every call site can be a really arduous task. If you can, try to set sensible defaults for how JSON is decoded in your Laravel application. If not, going forward, add them to new call sites. Future self will thank you for the clarity.
