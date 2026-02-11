@@ -4,23 +4,21 @@ title: Now
 permalink: /now/
 ---
 
-*Last updated: January 2026*
+*Last updated: February 2026*
 
 ## Reading
 
 * The Phoenix Project by Gene Kime, Kevin Behr, and George Spafford
-* Pledging My Time by Ray Padgett
 
 ## Listening To
 
 ### Music
 
-* MJ Lenderman
-* Bob Dylan
+* Joyner Lucas
 
 ### Podcasts
 
-* Against the Rules with Michael Lewis
+* [The Pragmatic Engineer](https://www.pragmaticengineer.com/)
 * The Standup
 
 ## Working On
