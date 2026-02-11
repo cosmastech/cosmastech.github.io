@@ -25,6 +25,10 @@ permalink: /now/
 
 Currently working as a Senior Software Engineer and tech-lead at [Loop Returns](https://www.loopreturns.com/).
 
+I am working on [adding typed form requests to Laravel 13](https://github.com/laravel/framework/pull/58676).
+
+I am preparing for a talk on Effective Code Reviews for Laracon EU -- my first conference talk and my first time visiting Europe.
+
 ## On My Mind
 
 * Learning how to use AI effectively
