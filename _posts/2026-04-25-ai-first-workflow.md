@@ -30,4 +30,10 @@ Again, just my beliefs here, and I'm sure they're mixed up in their own way.
 
 Not yet, anyhow. The most challenging part of software development is understanding a system and making non-breaking changes when requirements shift. The bigger a system is, the lower the test coverage, the poorer documented a system is, the worse the AI outcomes will be. By default, it's not going to tell you this: it's not going to ask you for clarity about something, it's not going to suggest you pushback against requirements. AI is a highly confident, highly capable sycophant.
 
-There are ways to seek clarity before diving in, like [Matt Pocock's grill-me](https://github.com/mattpocock/skills/blob/main/grill-me/SKILL.md) skill.
+There are ways to seek clarity before diving in, like [Matt Pocock's grill-me](https://github.com/mattpocock/skills/blob/main/grill-me/SKILL.md) skill. This is not the default behavior for an LLM.
+
+One of the dreams being sold by agentic development is that anybody can commit code to a project. How do commit code when you don't know the ramifications of your change and don't know you need to probe and challenge your agentic partner?
+
+### But AI is Pretty Good
+
+@todo
