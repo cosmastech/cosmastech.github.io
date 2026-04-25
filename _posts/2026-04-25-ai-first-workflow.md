@@ -17,3 +17,17 @@ It may seem unusual, but moving to an AI-first workflow took me through the stag
 * Acceptance - This is a bigger picture.
 
 Grief is non-linear, nor is it something that is conquered. There are days where I move from acceptance to anger to denial.
+
+## Acceptance?
+
+Corners of the internet have their own cultural beliefs and norms. We love to think of ourselves are purely logical beings, unswayed by social pressures or God forbid, our emotions. Nuance is often lacking. The prevailing doomer belief on Reddit is not correct, nor is the AI-utopia belief on X. Everyone's story and belief reflects a little objective truth as well as some phase of their grief.
+
+## Current Stance
+
+Again, just my beliefs here, and I'm sure they're mixed up in their own way.
+
+### AI Isn't Good Enough
+
+Not yet, anyhow. The most challenging part of software development is understanding a system and making non-breaking changes when requirements shift. The bigger a system is, the lower the test coverage, the poorer documented a system is, the worse the AI outcomes will be. By default, it's not going to tell you this: it's not going to ask you for clarity about something, it's not going to suggest you pushback against requirements. AI is a highly confident, highly capable sycophant.
+
+There are ways to seek clarity before diving in, like [Matt Pocock's grill-me](https://github.com/mattpocock/skills/blob/main/grill-me/SKILL.md) skill.
