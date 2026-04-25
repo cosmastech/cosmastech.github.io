@@ -14,7 +14,7 @@ permalink: /now/
 
 ### Music
 
-* Joyner Lucas
+* Guided by Voices
 
 ### Podcasts
 
