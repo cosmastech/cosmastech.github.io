@@ -1,7 +1,7 @@
 ---
 title: "TIL: Identifying Exceptions in Laravel Middleware"
 date: 2026-06-13
-tags: Laravel, middleware, http
+tags: Laravel, middleware, http, testing
 ---
 
 My team and I have been working on building a light observability layer around an important API in our Laravel app. We had crafted the functionality: data models to represent what happens during an event, new infra to keep our core database free from noisy writes, and an AI-assisted planning doc that was too long to read. We were doing software engineering in 2026. :sunglasses:
@@ -144,4 +144,29 @@ With that, we started seeing the exceptions logged in our database! :celebrate:
 
 It might still make sense to have a try-catch block, in case there's some kind of failure in the middleware pipeline. But for simplicity's sake, I'm only including the part that's important for 98% of use-cases.
 
-##
+## Takeaways
+
+I wanted to capture this experience because it was something in my 5+ years as Laravel developer I had never come across.
+
+First, I learned that Laravel includes the exception within a response separate from the rendering. This feels like it could potentially unlock some interesting test scenarios.
+
+Secondly, manual testing is as important as ever. For our original implementation, we may have had a passing test like this.
+
+```php
+public function test_it_records_exceptions(): void
+{
+    $next = fn (): never => throw new Exception('Boom');
+    $middleware = $this->app->make(CaptureApiRequest::class);
+
+    try {
+        $middleware->handle($this->app->make('request'), $next);
+        $this->fail('No exception was thrown');
+    } catch (Exception $e) {
+        $this->assertSame('Boom', $e->getMessage());
+    }
+
+    $this->assertCount(1, DB::table('exceptions')->get());
+}
+```
+
+This would provide false confidence, as in practice, that's not how the middleware would be executed. Manual testing proved our expectations faulty, and instead, an integration test was written to insulate us against regressions.
