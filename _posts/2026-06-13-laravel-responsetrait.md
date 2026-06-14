@@ -136,7 +136,7 @@ public function handle(Request $request, Closure $next)
 }
 ```
 
-With that, we started seeing the exceptions logged in our database! :celebrate:
+With that, we started seeing the exceptions logged in our database! 🎉
 
 ### For the Pedants
 
