@@ -4,11 +4,11 @@ title: Now
 permalink: /now/
 ---
 
-*Last updated: February 2026*
+*Last updated: June 2026*
 
 ## Reading
 
-* The Phoenix Project by Gene Kime, Kevin Behr, and George Spafford
+* Slaughterhouse Five by Kurt Vonnegut
 
 ## Listening To
 
