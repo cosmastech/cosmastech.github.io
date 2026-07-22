@@ -18,9 +18,6 @@ I've read code and not understood it. I've read code and not realized that I did
 ## AI is sometimes bad at code
 All of the same things humans do, AI does. It does it faster, requires an external LLM provider, and costs money per turn.
 
-## Agentic development feels very different [Consider removing]
-I'm not sure if it's different and it sucks, or it's just different and I don't like change.
-
 ## Writing instructions in English is hard
 Using English to prompt a stochastic genie to model business goals feels like trying to add pepper to a pot of soup, except I'm standing two stories above the kitchen. Sometimes I add too little, sometimes I add too much, sometimes I totally miss my target.
 
@@ -108,3 +105,5 @@ It's hard to feel productive while an agent is doing it's work and it's very tem
 The sort of person who liked software development five years ago received a different set of rewards in the process of building things. The tension of "I don't understand this problem" and the resolution of "I figured it out" are either gone or materially shifted into something unrecognizable to my dopamine receptors.
 
 It stands to reason that the rewards of the new software development process would not feel (as) good to the profile of a person who liked pre-agentic development.
+
+Maybe it's just change and I don't like change?
