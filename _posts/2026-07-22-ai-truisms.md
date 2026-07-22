@@ -62,7 +62,16 @@ will naturally have a vastly different agentic development experience than a cod
 ## Adversarial code reviews are powerful
 Whether I write the code myself or an agent does, having two separate models review the code has been a win, hands down. Remember, both AI and humans are sometimes bad at code. [Multi-model code reviews](https://www.skills.sh/cosmastech/skills/multi-model-code-review) add more Swiss cheese to the process.
 
-AI doesn’t understand
+## AI doesn't learn
+This is painful. Every time an agent goes off the rails, we want to add a new skill file or modify our CLAUDE.md or AGENTS.md, ending up with [scar-tissue](https://medium.com/machine-words/ptsd-post-traumatic-software-design-51e7eac44664) markdown that eats tokens and probably just confuses the LLM.
+
+Either that or I'm continuously writing in my prompt what I want the agent to avoid.
+
+## AI doesn’t understand
+Conman is short for "confidence man," who abuse their victim's trust by projecting confidence. AI is a token generation process. In my experience, LLMs don't stop and ask me to clarify when they don't understand what I'm asking. Skill issue.
+
+AI doesn't understand business context unless it's provided. Business context is usually very deep, scattered in many places, and it's [hard to recognize what's our implicit understanding](https://en.wikipedia.org/wiki/Curse_of_knowledge).
+
 AI isn’t responsible for failures
 Deep human understanding is irreplaceable
 Context is the current war
