@@ -83,8 +83,28 @@ Trying to grok a codebase with years of tribal knowledge, varying engineering pr
 The people who understand the code deeply are able to glance at a planning document or a bug ticket and provide more steering than I may ever be able to. The code is not a part of my DNA, nor is it part of the LLM's DNA: at the end of each session, the context has to be rebuilt.
 
 ## Context is the current war
+Don't give too little context. Don't give too much context. Don't let the LLM get into the dumb zone by going past the 30% of the context window. Summarize. Don't summarize, start a new session instead. Use hand-off docs. Don't use hand-off docs.
 
-Ballooning AI costs are not sustainable
-AI is not deterministic
-Engineering doesn’t feel the same. Feedback and reward loops which made programming attractive are disappearing. The profile of a human who liked hands on keyboard programming does not necessarily align with agentic first programming rewards.
-Swapping between agent sessions leads to more decisions (man picking potatoes versus sorting potatoes)
+## The value of agentic first development hasn't materialized
+Each new state of the art model's cost-per-token exceeds the previous version substantially. The chickens will have to come home to roost eventually: be it layoffs or spending caps.
+
+### Saying yes is easier, even when saying no is probably better
+It's easier than ever to say "yes" to whatever your customers want. Saying "no" is psychologically harder than saying "yes." AI allows us to avoid saying "no, we won't support that," at the cost of complexity for engineers, AI agents, users, and support.
+
+![Just one more setting for a single client bro](/assets/2026/just-one-more-setting-bro.jpg)
+
+### Is our product better?
+It's really easy to build a new feature and add it to your product. I don't believe it's materially easier to know whether or not that feature is wanted by users or will be used.
+
+## Vanity refactors are easier than ever
+For the low cost of whatever my employer is paying for tokens, I can refactor code so it meets my personal sensibilities. :sunglasses: Just pay that cost again when someone else has different sensibilities.
+
+## Thrashing and continuous decision making sucks
+I have three or four agent sessions running right now. All of them are waiting on me to provide input. I think back to [Alan Watts' little parable about the farm laborer](https://www.youtube.com/watch?v=YTCyloOL2DY) who gets promoted. He goes from chopping logs and mending fences to deciding which potatoes should be kept or thrown away. The laborer quits after one day because continuous decision making is too much for him.
+
+It's hard to feel productive while an agent is doing it's work and it's very tempting to open a new session to make it seem like I'm doing something. More decisions, more context switching, less flow.
+
+## Software development doesn't feel the same
+The sort of person who liked software development five years ago received a different set of rewards in the process of building things. The tension of "I don't understand this problem" and the resolution of "I figured it out" are either gone or materially shifted into something unrecognizable to my dopamine receptors.
+
+It stands to reason that the rewards of the new software development process would not feel (as) good to the profile of a person who liked pre-agentic development.
