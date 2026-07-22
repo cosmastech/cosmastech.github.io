@@ -102,7 +102,7 @@ I have three or four agent sessions running right now. All of them are waiting o
 It's hard to feel productive while an agent is cooking. It's very tempting to open a new session to make it seem like I'm doing something. More decisions, more context switching, less flow.
 
 ### Software development doesn't feel the same
-The sort of person who liked software development five years ago received a different set of rewards in the process of building things. The tension of "I don't understand this problem" and the resolution of "I figured it out" are either gone or materially shifted into something unrecognizable to my dopamine receptors.
+The sort of person who liked software development five years ago received a different set of rewards in the process of building things. The tension of "I don't understand this problem" and the resolution of "I figured it out" are either gone or materially shifted into something [unrecognizable to my dopamine receptors](https://pydantic.dev/articles/the-human-in-the-loop-is-tired).
 
 It stands to reason that the rewards of the new software development process would not necessarily feel as good to the profile of a person who liked pre-agentic development.
 
