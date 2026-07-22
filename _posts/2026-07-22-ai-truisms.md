@@ -69,6 +69,9 @@ AI doesn't understand business context unless it's provided. Business context is
 ## AI isn't responsible for failures
 AI can aid in detecting root cause of incidents and failures, but there's no firing the agent if it was their code which caused the incident. They are like the owner's son: no matter what they do, they ain't getting fired. In fact, they'll probably continue to get promoted.
 
+## AI is an incredible tool
+Last year a loved one took sick. During their hospital stay, I was able to feed doctors' notes into ChatGPT to help me understand their condition, what test results mean, and help me figure out which questions to ask. ChatGPT isn't a doctor, but it certainly helped me feel like I had some understanding of what was happening. This was priceless.
+
 ## Deep human understanding is irreplaceable
 I've been in the weird position where I started a new job right around the time that agentic development became the norm. The code looks like what you might expect a startup's codebase to look like with 7 years of development and a hundred or more devs working on it.
 
