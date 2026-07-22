@@ -1,5 +1,5 @@
 ---
-title: "What's True about AI"
+title: "What's True About AI"
 date: 2026-07-22
 tags: AI, development
 ---
