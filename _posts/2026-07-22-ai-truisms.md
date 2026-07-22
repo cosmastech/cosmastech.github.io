@@ -1,0 +1,72 @@
+---
+title: "What's True about AI"
+date: 2026-07-22
+tags: AI, development
+---
+
+I used to love programming. I still do, but I do it a lot less now.
+
+Things feel different. Everybody is talking about AI, and there's a cloud that hangs over the field of software development: Are our jobs going away? Are we no longer differentiated by the things we spent so long learning? Do Boris Cherney, Pete Steinberger, and all the other AI thought-leaders know something we don't? Or are these people just living in an alternate reality where tokens are free and everything AI does it lovely?
+
+I wanted to write down a simple list of ideas that have been running around in my head. These are things which I believe are facts, but are at least true for my lived experiences.
+
+## Humans are sometimes bad at code
+I've read and written plenty of bad code. Poor abstractions, unnecessary defensiveness, re-inventing the wheel, security vulnerabilities: you name it, I've probably done it.
+
+I've read code and not understood it. I've read code and not realized that I didn't understand it until much later.
+
+## AI is sometimes bad at code
+All of the same things humans do, AI does. It does it faster, requires an external LLM provider, and costs money per turn.
+
+## Agentic development feels very different [Consider removing]
+I'm not sure if it's different and it sucks, or it's just different and I don't like change.
+
+## Writing instructions in English is hard
+Using English to prompt a stochastic genie to model business goals feels like trying to add pepper to a pot of soup, except I'm standing two stories above the kitchen. Sometimes I add too little, sometimes I add too much, sometimes I totally miss my target.
+
+## I can't read all of this
+Ask the model something. Terminal window fills up several times over. Scroll up. Read a little bit. Feel overwhelmed and just accept that the model is probably right.
+
+Models are confident,overly verbose, and love jargon. I have observed this internal defense mechanism: "I don't understand this. I must be too stupid to understand this. I don't want to be or appear stupid, so by agreeing, I can bypass that."  This internal conflict leads to more slop than anything else.
+
+Bonus points: humans can do this too, I just hadn't noticed it so starkly before. When I hear someone say "domain," I immediately have no idea what they're talking about. Is this a bounded context? Is this a feature of the product? Is this simply an area of code? [Nobody knows](https://www.youtube.com/watch?v=JYqfVE-fykk).
+
+## I am suspicious of all human writing
+I don't know if people were always saying "it's not X, it's Y," but I'm hyper-aware of it. When I see it, I assume it was written by AI. I am starting to look for the fingerprints of LLM generated text everywhere. It's exhausting to be suspicious all the time.
+
+## Using AI to write messages for humans sucks
+If you couldn't be bothered to write the message yourself, it signals to me that you don't care about me or what you're saying.
+
+I'm tired of docslop. There's so much reading we're expected to do now; the cost of writing giant documents in Google Docs, Linear, JIRA, or Notion has gone to zero. I'm dubious that people who generate giant documents read every line of them.
+
+I don't believe that people receiving the documents are reading the documents either, I think they're asking their agent to summarize it. The pipeline of written communication is **person A -> person A's agent -> person B's agent -> person B**.
+
+## Differing outcomes [EXPAND]
+The blind men touching the elephant describing it totally different 
+
+## Different feature areas feel totally different
+Feature areas within an existing codebase have [differing risk tolerances](https://www.youtube.com/watch?v=DZpR0GojoWQ). Using AI to write or modify code that touches payment processing? sweating bullets. Using AI to add a brand new feature or product? Fuck it, we ball.
+
+People having such vastly different experiences with agentic develop, either pro or con, are likely the result of the above. Additionally, codebases with:
+* low cohesion
+* high coupling
+* poor or inconsistent architecture
+* mounds of outstanding tech debt
+* conflicting agent markdown files
+* poor test coverage
+* hinge on undocumented/tribal knowledge
+* written in languages less represented in the training set
+
+will naturally have a vastly different agentic development experience than a codebase which is the opposite.
+
+## Adversarial code reviews are powerful
+Whether I write the code myself or an agent does, having two separate models review the code has been a win, hands down. Remember, both AI and humans are sometimes bad at code. [Multi-model code reviews](https://www.skills.sh/cosmastech/skills/multi-model-code-review) add more Swiss cheese to the process.
+
+AI doesn’t understand
+AI isn’t responsible for failures
+Deep human understanding is irreplaceable
+Context is the current war
+Ballooning AI costs are not sustainable
+AI is not deterministic
+Engineering doesn’t feel the same. Feedback and reward loops which made programming attractive are disappearing. The profile of a human who liked hands on keyboard programming does not necessarily align with agentic first programming rewards.
+Swapping between agent sessions leads to more decisions (man picking potatoes versus sorting potatoes)
