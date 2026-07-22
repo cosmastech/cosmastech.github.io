@@ -96,7 +96,7 @@ It's really easy to build a new feature and add it to your product. I don't beli
 ## Vanity refactors are easier than ever
 For the low cost of whatever my employer is paying for tokens, I can refactor code so it meets my personal sensibilities. :sunglasses: Just pay that cost again when someone else has different sensibilities.
 
-## Thrashing and continuous decision making suck
+## Thrashing and continuous decision-making suck
 I have three or four agent sessions running right now. All of them are waiting on me to provide input. I think back to [Alan Watts' little parable about the farm laborer](https://www.youtube.com/watch?v=YTCyloOL2DY) who gets promoted. He goes from chopping logs and mending fences to deciding which potatoes should be kept or thrown away. The laborer quits after one day because continuous decision making is too much for him.
 
 It's hard to feel productive while an agent is cooking. It's very tempting to open a new session to make it seem like I'm doing something. More decisions, more context switching, less flow.
