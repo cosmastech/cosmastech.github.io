@@ -85,12 +85,12 @@ Don't give too little context. Don't give too much context. Don't let the LLM ge
 ## The value of agentic first development hasn't materialized
 Each new state-of-the-art model's cost-per-token exceeds the previous version substantially. The chickens will have to come home to roost eventually: be it layoffs or spending caps.
 
-### Saying yes is easier, even when saying no is probably better
+#### Saying yes is easier, even when saying no is probably better
 It's easier than ever to say "yes" to whatever your customers want. Saying "no" is psychologically harder than saying "yes." AI allows us to avoid saying "no, we won't support that," at the cost of complexity for engineers, AI agents, users, and support.
 
 ![Just one more setting for a single client bro](/assets/2026/just-one-more-setting-bro.jpg)
 
-### Is our product better?
+#### Is our product better?
 It's really easy to build a new feature and add it to your product. I don't believe it's materially easier to know whether or not that feature is wanted by users or will be used.
 
 ## Vanity refactors are easier than ever
