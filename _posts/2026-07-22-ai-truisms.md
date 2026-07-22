@@ -70,11 +70,20 @@ Either that or I'm continuously writing in my prompt what I want the agent to av
 ## AI doesn’t understand
 Conman is short for "confidence man," who abuse their victim's trust by projecting confidence. AI is a token generation process. In my experience, LLMs don't stop and ask me to clarify when they don't understand what I'm asking. Skill issue.
 
-AI doesn't understand business context unless it's provided. Business context is usually very deep, scattered in many places, and it's [hard to recognize what's our implicit understanding](https://en.wikipedia.org/wiki/Curse_of_knowledge).
+AI doesn't understand business context unless it's provided. Business context is usually very deep, scattered in many places, and it's [hard to recognize what's our implicit understanding](https://en.wikipedia.org/wiki/Curse_of_knowledge) that we don't put into context.
 
-AI isn’t responsible for failures
-Deep human understanding is irreplaceable
-Context is the current war
+## AI isn’t responsible for failures
+AI can aid in detecting root cause of incidents and failures, but there's no firing the agent if it was their code which caused the incident. They are like the owner's son: no matter what they do, they ain't getting fired. In fact, they'll probably continue to get promoted.
+
+## Deep human understanding is irreplaceable
+I've been in the weird position where I started a new job right around the time that agentic development became the norm. The code looks like what you might expect a startup's codebase to look like with 7 years of development and a hundred or more devs working on it.
+
+Trying to grok a codebase with years of tribal knowledge, varying engineering practices, latent bugs, and complex async processes is hard. Harder still when the expectation is to be extra productive with the aid of AI.
+
+The people who understand the code deeply are able to glance at a planning document or a bug ticket and provide more steering than I may ever be able to. The code is not a part of my DNA, nor is it part of the LLM's DNA: at the end of each session, the context has to be rebuilt.
+
+## Context is the current war
+
 Ballooning AI costs are not sustainable
 AI is not deterministic
 Engineering doesn’t feel the same. Feedback and reward loops which made programming attractive are disappearing. The profile of a human who liked hands on keyboard programming does not necessarily align with agentic first programming rewards.
