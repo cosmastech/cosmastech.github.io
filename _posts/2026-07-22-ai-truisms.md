@@ -34,7 +34,7 @@ I don't know if people were always saying "it's not X, it's Y," but I'm hyper-aw
 ### Using AI to write messages for humans sucks
 If you couldn't be bothered to write the message yourself, it signals to me that you don't care about me or what you're saying.
 
-I'm tired of docslop. There's so much reading we're expected to do now; the cost of writing giant documents in Google Docs, Linear, JIRA, or Notion has gone to zero. I'm dubious that people who generate giant documents read every line of them.
+I'm tired of docslop. There's so much reading we're expected to do now; the cost of writing giant documents in Google Docs, Linear, JIRA, or Notion has gone to zero. I'm dubious that people who generate giant documents read every line of them. Why? Because I have generated giant docs but not read them. It was easy.
 
 I don't believe that people receiving the documents are reading the documents either: I think they're asking their agent to summarize it. The pipeline of written communication is **person A -> person A's agent -> person B's agent -> person B**.
 
