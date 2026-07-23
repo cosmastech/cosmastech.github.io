@@ -80,7 +80,7 @@ Trying to grok a codebase with years of tribal knowledge, varying engineering pr
 The people who understand the code deeply are able to glance at a planning document or a bug ticket and provide more steering than I may ever be able to. The code is not a part of my DNA, nor is it part of the LLM's DNA: at the end of each session, the context has to be rebuilt.
 
 ### Context is the current war
-Don't give too little context. Don't give too much context. Don't let the LLM get into the dumb zone by going past 30% of the context window. Summarize. Don't summarize, start a new session instead. Use hand-off docs. Don't use hand-off docs.
+Don't give too little context. Don't give too much context. Don't let the LLM get into the dumb zone by going past 30% of the context window. Compact. Don't compact, start a new session instead. Use hand-off docs. Don't use hand-off docs.
 
 ### The value of agentic first development hasn't materialized
 Each new state-of-the-art model's cost-per-token exceeds the previous version substantially. The chickens will have to come home to roost eventually: be it layoffs or spending caps.
