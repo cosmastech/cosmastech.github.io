@@ -15,6 +15,8 @@ I've read and written plenty of bad code. Poor abstractions, unnecessary defensi
 
 I've read code and not understood it. I've read code and not realized that I didn't understand it until much later.
 
+I've misunderstood requirements, implemented code changes, and then had to rework a lot of it after release.
+
 ### AI is sometimes bad at code
 All of the same things humans do, AI does. It does it faster, requires an external LLM provider, and costs money per turn.
 
