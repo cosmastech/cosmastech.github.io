@@ -1,7 +1,7 @@
 ---
 title: "What's True About AI"
 date: 2026-07-22
-tags: AI, development
+tags: AI, agentic engineering, software development
 ---
 
 I used to love programming. I still do, but I do it a lot less now.
