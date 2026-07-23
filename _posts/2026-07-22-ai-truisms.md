@@ -82,7 +82,7 @@ The people who understand the code deeply are able to glance at a planning docum
 ### Context is the current war
 Don't give too little context. Don't give too much context. Don't let the LLM get into the dumb zone by going past 30% of the context window. Compact. Don't compact, start a new session instead. Use hand-off docs. Don't use hand-off docs.
 
-### The value of agentic first development hasn't materialized
+### The value of agentic first development hasn't fully materialized
 Each new state-of-the-art model's cost-per-token exceeds the previous version substantially. The chickens will have to come home to roost eventually: be it layoffs or spending caps.
 
 #### Saying yes is easier, even when saying no is probably better
