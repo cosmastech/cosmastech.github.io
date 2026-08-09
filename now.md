@@ -8,7 +8,7 @@ permalink: /now/
 
 ## Reading
 
-* Fargo Rock City by Kurt Vonnegut
+* Fargo Rock City by Chuck Klosterman
 
 ## Listening To
 
