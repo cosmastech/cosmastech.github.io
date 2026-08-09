@@ -19,7 +19,7 @@ permalink: /now/
 ### Podcasts
 
 * [The Pragmatic Engineer](https://www.pragmaticengineer.com/)
-* The Standup
+* [The Next Token](https://x.com/NextTokenShow)
 
 ## Working On
 
