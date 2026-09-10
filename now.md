@@ -4,7 +4,7 @@ title: Now
 permalink: /now/
 ---
 
-*Last updated: August 2026*
+*Last updated: September 2026*
 
 ## Reading
 
@@ -23,11 +23,12 @@ permalink: /now/
 
 ## Working On
 
-Currently working as a Senior Software Engineer at [Loop Returns](https://www.loopreturns.com/).
+_coming soon_
 
 ## On My Mind
 
-* Improving my TypeScript
+* Understanding TypeScript
+* How do you get useful in a new project in a new language while still being AI-first?
 * Improving my health
 
 ---
